@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow:300');
+
+@FontStylePrimary   :sans-serif;
+@topic_font         :'Barlow', sans-serif;
+// @topic_font         :"Sukhumvit Set",sans-serif; 
+
+// COLOR SETUP
+// http://www.color-hex.com/color/040d14
+@bg_color           :#FFFFFF;
+@bg_gray            :#EEEEEE;
+
+@font_color_topic   :#222222;
+@font_color_body    :#666666;
+@font_color_light   :#BBBBBB;
+
+@primary_color      :#13BF4C; // http://www.color-hex.com/color/55ce63
+@primary_color_dark :#3b9045;
+@primary_color_light:#ddf5df;
+
+html {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+a[href], button {
+    -ms-touch-action: none; /* IE10 */
+    touch-action: none;     /* IE11 */
+}
+
+body{
+    background: @bg_color;
+    overflow-x:hidden;
+    font-family: @topic_font;
+}
+
+// Animation of Textarea
+.autosize{
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+}
+
+.bgGradient(@primary,@second){
+    background: @primary;
+    background: -webkit-linear-gradient(to right, @primary, @second);
+    background: linear-gradient(to right, @primary, @second);
+}
+
+.transitionAnimation(@s){
+    transition:all @s ease-in-out;
+    -moz-transition:all @s ease-in-out;
+    -webkit-transition:all @s ease-in-out;
+    -o-transition:all @s ease-in-out;
+}
