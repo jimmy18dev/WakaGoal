@@ -106,7 +106,7 @@ class User{
     }
 
     public function lostUpate(){
-        $this->db->query('SELECT * FROM user WHERE (DATE(updated) != CURDATE() OR updated IS NULL) LIMIT 1');
+        $this->db->query('SELECT * FROM user WHERE (DATE(updated) != CURDATE()) LIMIT 1');
         $this->db->execute();
         $dataset = $this->db->single();
 

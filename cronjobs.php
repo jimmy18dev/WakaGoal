@@ -9,7 +9,7 @@ $user_id = $userdata['id'];
 $user_name = $userdata['name'];
 
 if(empty($user_id) || empty($access_token)){
-	echo 'Access token is empty!';
+	echo 'Access token <strong>is empty!</strong>';
 	exit(0);
 }
 
@@ -34,5 +34,5 @@ foreach ($summaries->data as $data){
 }
 
 $user->updated($userdata['id']);
-echo $user_name.' summaries updated.';
+echo '<strong>'.$user_name.'</strong> summaries updated.';
 ?>
