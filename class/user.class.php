@@ -106,17 +106,25 @@ class User{
     }
 
     public function lostUpate(){
-        $this->db->query('SELECT * FROM user WHERE (DATE(updated) != CURDATE()) LIMIT 1');
+        $this->db->query('SELECT * FROM user WHERE flag != :flag ORDER BY RAND() LIMIT 1');
+        $this->db->bind(':flag', date('d'));
         $this->db->execute();
         $dataset = $this->db->single();
 
         return $dataset;
     }
 
-    public function updated($user_id){
-        $this->db->query('UPDATE user SET updated = :today WHERE id = :user_id');
+    public function updateFlag($user_id){
+        $this->db->query('UPDATE user SET flag = :flag WHERE id = :user_id');
         $this->db->bind(':user_id',$user_id);
-        $this->db->bind(':today', date('Y-m-d H:i:s'));
+        $this->db->bind(':flag', date('d'));
+        $this->db->execute();
+    }
+
+    public function updateCheckingTime($user_id){
+        $this->db->query('UPDATE user SET checking_time = :checking WHERE id = :user_id');
+        $this->db->bind(':user_id',$user_id);
+        $this->db->bind(':checking', date('Y-m-d H:i:s'));
         $this->db->execute();
     }
 
