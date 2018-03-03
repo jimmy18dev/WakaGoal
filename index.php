@@ -102,13 +102,22 @@ $(function(){
             });
 
             var ctx = document.getElementById('chart').getContext('2d');
+
+            var gradientFill = ctx.createLinearGradient(500, 0, 100, 0);
+
+            gradientFill.addColorStop(0, "#13BF4C");
+            gradientFill.addColorStop(1, "#1abc9c");
+
+            // How To Make Gradient Line Chart
+            // https://blog.vanila.io/chart-js-tutorial-how-to-make-gradient-line-chart-af145e5c92f9
+
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: date,
                     datasets: [{
                         data: total_seconds,
-                        backgroundColor: '#13BF4C',
+                        backgroundColor: gradientFill,
                         borderWidth: 0
                     }]
                 },
