@@ -46,7 +46,7 @@ if(!empty($waka_id)){
 	$user = new User();
 	$user_id = $user->register($waka_id,$name,$email,$website,$access_token,$refresh_token,$photo);
 
-	$cookie_time = time() + 3600 * 24 * 2; // Cookie Time (2 Months)
+	$cookie_time = time() + 3600 * 24 * 60; // Cookie Time (2 Months)
 	$_SESSION['login_string'] = $user->Encrypt($user_id);
 	setcookie('login_string',$user->Encrypt($user_id),$cookie_time);
 }

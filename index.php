@@ -115,7 +115,7 @@ $(function(){
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    cornerRadius: 5,
+                    cornerRadius: 10,
                 	legend: { display: false },
                 	tooltips: {
 	                    mode: 'index',
@@ -147,7 +147,7 @@ $(function(){
                             	callback: function(value, index, values) {
                             		var lastv = (values.length)-1
                             		if(index != lastv)
-                            			return Math.floor(value / 3600)+' hrs'
+                            			return Math.floor(value / 3600)+' hr'
                             		else
                             			return '';
                             	}
