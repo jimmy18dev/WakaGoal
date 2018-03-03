@@ -9,10 +9,17 @@ $access_token 	= $userdata['access_token'];
 $user_id 		= $userdata['id'];
 $user_name 		= $userdata['name'];
 
-if(empty($user_id) || empty($access_token)){
-	echo 'Access token <strong>is empty!</strong>';
+if(empty($user_id)){
+	echo'All users up to date.';
 	exit(0);
 }
+if(empty($access_token)){
+	echo 'Access token is empty!';
+	exit(0);
+}
+
+// Update Checking Time.
+$user->updateCheckingTime($user_id);
 
 $WakaTime 		= new WakaTime();
 
@@ -33,6 +40,6 @@ foreach ($summaries->data as $data){
 	}
 }
 
-$user->updated($userdata['id']);
-echo '<strong>'.$user_name.'</strong> summaries updated.';
+$user->updateFlag($userdata['id']);
+echo $user_name.' summaries updated.';
 ?>
