@@ -14,7 +14,8 @@ switch ($_SERVER['REQUEST_METHOD']){
 	case 'GET':
 		switch ($_GET['request']){
 			case 'activities':
-				$activities = $activity->listActivity($user->id);
+				$profile_id = $_GET['profile_id'];
+				$activities = $activity->listActivity($profile_id);
 				$returnObject['activities'] = $activities;
 				break;
 			case 'leaderboards':

@@ -1,40 +1,284 @@
 @import "reset";
 @import "config";
 
+@fontsize-head: 2.8em;
+@fontsize-body: 1.4em;
+@fontsize-info: 1em;
+
 .header{
-	width: 100%;
-	height: 56px;
+	width: 40%;
+	padding: 0 30%;
+	height: 60px;
 	float: left;
 	display: inline-block;
+	margin-bottom: 5%;
 
 	a.link{
+		width: 100%;
 		float: left;
 		display: inline-block;
 		font-size: 1.4em;
 		text-decoration: none;
 		height: 30px;
-		padding: 13px 1%;
+		padding: 15px 0%;
 		line-height: 1.3em;
-		color: #BBBBBB;
+		color: #FFFFFF;
 
-		&.active{ color: #000000; }
 		span{ margin-left: 10px; }
 	}
+}
 
-	.avatar{
-		float: right;
+.container{
+	width: 40%;
+	margin: 0 30%;
+	margin-bottom: 6%;
+	float: left;
+	display: inline-block;
+
+	h1{
+		font-size: @fontsize-head;
+		color: #FFFFFF;
+	}
+
+	p{
+		font-size: @fontsize-body;
+		line-height: 1.4em;
+		color: #999999;
+
+		strong{ color: #FFFFFF; }
+
+		i.fa-check-circle{ margin-left: 10px; color: #304FFE; }
+	}
+
+	.form{
+		width: 100%;
+		float: left;
 		display: inline-block;
-		height: 36px;
-		padding: 10px 1%;
+		margin-top: 5%;
 
-		img{
-			width: 36px;
-			height: 36px;
+		&.hidden{ display: none; }
+
+		input[type="number"]{
+			width: 64%;
+			font-size: @fontsize-body;
 			float: left;
 			display: inline-block;
-			border-radius: 50%;
-			box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
-			background: #FAFAFA;
+			margin: 0;
+			padding: 8px 3%;
+			border: 0;
+			background: #333333;
+			border-radius: 5px;
+			text-align: center;
+			color: #BBBBBB;
+			line-height: 1.25em;
+			font-family: @topic_font;
+
+			&:hover{ cursor: pointer; }
+
+			&:focus{
+				background: #666666;
+				color: #FFFFFF;
+			}
+		}
+		button{
+			width: 28%;
+			float: right;
+			display: inline-block;
+			font-size: @fontsize-body;
+			border: 0;
+			background: #FFFFFF;
+			color: #000000;
+			margin: 0;
+			line-height: 1em;
+			border-radius: 5px;
+			padding: 10px 0;
+			font-family: @topic_font;
+
+			&:hover{
+				cursor: pointer;
+				background: #EEEEEE;
+			}
+		}
+	}
+
+	p.note{
+		width: 100%;
+		display: inline-block;
+		font-size: @fontsize-info;
+		margin-top: 3%;
+		font-style: italic;
+		text-align: right;
+		color: #666666;
+	}
+
+	.progress{
+		width: 100%;
+		float: left;
+		display: inline-block;
+		margin-top: 5%;
+
+		.stat{
+			width: 100%;
+			float: left;
+			display: inline-block;
+			font-size: @fontsize-info;
+			color: #666666;
+
+			.complete{
+				float: left;
+				display: inline-block;
+			}
+			.goal{
+				float: right;
+				display: inline-block;
+			}
+		}
+
+		.inprogress{
+			width: 100%;
+			float: left;
+			display: inline-block;
+			position: relative;
+			background: #333333;
+			border-radius: 20px;
+			margin: 2% 0;
+			overflow: hidden;
+
+			&.complete{
+				background: #448AFF;
+				.bar{ background: #304FFE; border-radius: 0px; }
+			}
+
+			.bar{
+				width: 35%;
+				float: left;
+				display: inline-block;
+				height: 10px;
+				background: #FFFFFF;
+				border-radius: 20px;
+			}
+		}
+
+		button{
+			width: 100%;
+			float: left;
+			display: inline-block;
+			font-size: @fontsize-info;
+			border: 0;
+			background: transparent;
+			color: #666666;
+			font-family: @topic_font;
+
+			&:hover{ cursor: pointer; }
+		}
+	}
+
+	.content{
+		width: 100%;
+		float: left;
+		display: inline-block;
+		margin-top: 5%;
+
+		canvas{
+			width: 100%;
+			float: left;
+			display: inline-block;
+			height: 350px;
+		}
+
+		.leader-items{
+			width: 100%;
+			float: left;
+			display: inline-block;
+			font-size: @fontsize-body;
+			padding: 3% 0%;
+			line-height: 1.8em;
+			border-top: 1px solid #222222;
+
+			&:last-child{ border-bottom: 1px solid #222222; }
+
+			.photo{
+				width: 8%;
+				float: left;
+				display: inline-block;
+				margin-right: 4%;
+
+				img{
+					width: 100%;
+					float: left;
+					display: inline-block;
+					border-radius: 50%;
+				}
+			}
+			a.name{
+				width: 48%;
+				float: left;
+				display: inline-block;
+				text-decoration: none;
+				color: #FFFFFF;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+
+				&:hover{ text-decoration: underline; }
+			}
+			.time{
+				width: 40%;
+				float: left;
+				display: inline-block;
+				text-align: right;
+				color: #DDDDDD;
+			}
+		}
+		.mission-items{
+			width: 100%;
+			padding: 3% 0%;
+			float: left;
+			display: inline-block;
+			font-size: @fontsize-body;
+			border-top: 1px solid #222222;
+			line-height: 1.2em;
+
+			&:last-child{ border-bottom: 1px solid #222222; }
+
+			.caption{
+				width: 90%;
+				float: left;
+				display: inline-block;
+				color: #FFFFFF;
+			}
+			.icon{
+				width: 10%;
+				float: left;
+				display: inline-block;
+				text-align: right;
+				font-size: 1.2em;
+			}
+		}
+		.language-items{
+			width: 100%;
+			padding: 3% 0%;
+			float: left;
+			display: inline-block;
+			font-size: @fontsize-body;
+			border-top: 1px solid #222222;
+			line-height: 1.2em;
+
+			&:last-child{ border-bottom: 1px solid #222222; }
+
+			.title{
+				width: 60%;
+				float: left;
+				display: inline-block;
+				color: #FFFFFF;
+			}
+			.text{
+				width: 40%;
+				float: left;
+				display: inline-block;
+				text-align: right;
+				color: #DDDDDD;
+			}
 		}
 	}
 }
@@ -51,21 +295,21 @@
 		width: 100%;
 		float: left;
 		display: inline-block;
-		font-size: 3.2em;
+		font-size: @fontsize-head;
 		margin-bottom: 5%;
-		color: #000000;
+		color: #FFFFFF;
 	}
 	a{
 		display: inline-block;
 		text-decoration: none;
-		font-size: 2em;
-		color: #333333;
-		padding: 10px 30px;
+		font-size: @fontsize-body;
+		padding: 15px 20px;
 		border-radius: 5px;
-		color: @primary_color;
+		color: #000000;
+		background: #FFFFFF;
 
 		&:hover{ cursor: pointer; }
-		i{ margin-left: 10px; }
+		i{ margin-left: 15px; }
 	}
 }
 
@@ -78,127 +322,8 @@
 	text-align: center;
 
 	h2{
-		font-size: 3em;
-		color: #999999;
-	}
-}
-
-.container{
-	width: 60%;
-	margin: 0% 20%;
-	float: left;
-	display: inline-block;
-	margin-top: 56px;
-	margin-bottom: 5%;
-
-	.leader-items{
-		width: 100%;
-		float: left;
-		display: inline-block;
-		margin-bottom: 10%;
-		border-radius: 10px;
-
-		.date{
-			width: 100%;
-			float: left;
-			display: inline-block;
-			font-size: 3em;
-			margin-bottom: 1%;
-			color: #BBBBBB;
-			text-align: center;
-		}
-
-		.user-items{
-			width: 100%;
-			float: left;
-			display: inline-block;
-			font-size: 2em;
-			margin-top: 3%;
-
-			.photo{
-				width: 7%;
-				float: left;
-				display: inline-block;
-				margin-right: 3%;
-				position: relative;
-				margin-top: -3px;
-
-				img{
-					width: 100%;
-					float: left;
-					display: inline-block;
-					border-radius: 50%;
-					box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
-				}
-
-				i.fa-trophy{
-					position: absolute;
-					top: -5px;
-					right: -5px;
-					font-size: 0.65em;
-					color: #f1c40f;
-				}
-			}
-
-			.name{
-				width: 55%;
-				float: left;
-				display: inline-block;
-				color: #000000;
-			}
-			.time{
-				width: 35%;
-				float: left;
-				display: inline-block;
-				color: #333333;
-			}
-		}
-
-		
-	}
-}
-
-.stat{
-	width: 98%;
-	padding: 0% 1%;
-	float: left;
-	display: inline-block;
-
-	.items{
-		width: 33.33%;
-		padding-top: 5%;
-		float: left;
-		display: inline-block;
-		text-align: center;
-
-		.v{
-			display: block;
-			font-size: 3em;
-			color: #000000;
-
-			span{ color: #BBBBBB; }
-		}
-		.c{
-			display: block;
-			font-size: 2em;
-			line-height: 1em;
-			color: #999999;
-		}
-	}
-}
-
-.chart{
-	position: fixed;
-	bottom: 3%;
-	left: 0;
-	width: 98%;
-	padding-left: 2%;
-	float: left;
-	display: inline-block;
-
-	canvas{
-		width: 100%;
-		height: 50vh;
+		font-size: @fontsize-body;
+		color: #FFFFFF;
 	}
 }
 
