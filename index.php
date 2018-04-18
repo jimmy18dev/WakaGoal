@@ -104,18 +104,6 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1>Languages</h1>
-    <div class="content">
-        <?php foreach ($language as $var) {?>
-        <div class="language-items">
-            <div class="title"><?php echo $var['language'];?></div>
-            <div class="text"><?php echo $var['text'];?></div>
-        </div>
-        <?php } ?>
-    </div>
-</div>
-
-<div class="container">
     <h1>Leaderboard</h1>
     <div class="content">
         <?php foreach ($leaderboards as $var) {?>
@@ -136,6 +124,18 @@ if($user_online){
     <p>Yesterday <?php echo (!empty($yesterday['text'])?$yesterday['text']:'<span>Calm Down :)</span>');?>.</p>
     <div class="content">
         <canvas id="chart"></canvas>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Languages</h1>
+    <div class="content">
+        <?php foreach ($language as $var) {?>
+        <div class="language-items">
+            <div class="title"><?php echo $var['language'];?></div>
+            <div class="text"><?php echo $var['text'];?></div>
+        </div>
+        <?php } ?>
     </div>
 </div>
 
