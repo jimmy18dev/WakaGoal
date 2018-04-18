@@ -1,12 +1,17 @@
 @import "reset";
 @import "config";
 
+@fontsize-head: 2.8em;
+@fontsize-body: 1.4em;
+@fontsize-info: 1em;
+
 .header{
 	width: 40%;
 	padding: 0 30%;
 	height: 60px;
 	float: left;
 	display: inline-block;
+	margin-bottom: 5%;
 
 	a.link{
 		width: 100%;
@@ -17,31 +22,32 @@
 		height: 30px;
 		padding: 15px 0%;
 		line-height: 1.3em;
-		color: #999999;
+		color: #FFFFFF;
 
 		span{ margin-left: 10px; }
-		i{ color: #000000; }
 	}
 }
 
 .container{
 	width: 40%;
 	margin: 0 30%;
-	padding: 5% 0;
+	margin-bottom: 6%;
 	float: left;
 	display: inline-block;
 
 	h1{
-		font-size: 2.8em;
-		color: #333333;
+		font-size: @fontsize-head;
+		color: #FFFFFF;
 	}
 
 	p{
-		font-size: 1.6em;
+		font-size: @fontsize-body;
 		line-height: 1.4em;
-		color: #666666;
+		color: #999999;
 
-		strong{ color: #333333; }
+		strong{ color: #FFFFFF; }
+
+		i.fa-check-circle{ margin-left: 10px; color: #304FFE; }
 	}
 
 	.form{
@@ -52,43 +58,45 @@
 
 		&.hidden{ display: none; }
 
-		input[type="text"]{
-			width: 63%;
-			font-size: 1.6em;
+		input[type="number"]{
+			width: 64%;
+			font-size: @fontsize-body;
 			float: left;
 			display: inline-block;
 			margin: 0;
-			padding: 0 5%;
+			padding: 8px 3%;
 			border: 0;
-			background: #EEEEEE;
-			line-height: 2.5em;
+			background: #333333;
 			border-radius: 5px;
 			text-align: center;
-			color: #333333;
+			color: #BBBBBB;
+			line-height: 1.25em;
+			font-family: @topic_font;
 
 			&:hover{ cursor: pointer; }
 
 			&:focus{
-				background: #DDDDDD;
-				color: #000000;
+				background: #666666;
+				color: #FFFFFF;
 			}
 		}
 		button{
-			width: 25%;
-			font-size: 1.6em;
+			width: 28%;
 			float: right;
 			display: inline-block;
-			font-size: 1.6em;
+			font-size: @fontsize-body;
 			border: 0;
-			background: #333333;
-			color: #FFFFFF;
+			background: #FFFFFF;
+			color: #000000;
 			margin: 0;
-			line-height: 2.3em;
+			line-height: 1em;
 			border-radius: 5px;
+			padding: 10px 0;
+			font-family: @topic_font;
 
 			&:hover{
 				cursor: pointer;
-				background: #000000;
+				background: #EEEEEE;
 			}
 		}
 	}
@@ -96,21 +104,11 @@
 	p.note{
 		width: 100%;
 		display: inline-block;
-		font-size: 1em;
+		font-size: @fontsize-info;
 		margin-top: 3%;
 		font-style: italic;
 		text-align: right;
-		color: #BBBBBB;
-	}
-
-	.today{
-		width: 100%;
-		float: left;
-		display: inline-block;
-		text-align: center;
-		font-size: 4em;
-		color: #333333;
-		margin-top: 5%;
+		color: #666666;
 	}
 
 	.progress{
@@ -123,8 +121,8 @@
 			width: 100%;
 			float: left;
 			display: inline-block;
-			font-size: 0.8em;
-			color: #999999;
+			font-size: @fontsize-info;
+			color: #666666;
 
 			.complete{
 				float: left;
@@ -141,14 +139,14 @@
 			float: left;
 			display: inline-block;
 			position: relative;
-			background: #EEEEEE;
+			background: #333333;
 			border-radius: 20px;
 			margin: 2% 0;
 			overflow: hidden;
 
 			&.complete{
-				background: #1abc9c;
-				.bar{ background: #16a085; border-radius: 0px; }
+				background: #448AFF;
+				.bar{ background: #304FFE; border-radius: 0px; }
 			}
 
 			.bar{
@@ -156,7 +154,7 @@
 				float: left;
 				display: inline-block;
 				height: 10px;
-				background: #000000;
+				background: #FFFFFF;
 				border-radius: 20px;
 			}
 		}
@@ -165,12 +163,13 @@
 			width: 100%;
 			float: left;
 			display: inline-block;
-			font-size: 1em;
+			font-size: @fontsize-info;
 			border: 0;
 			background: transparent;
-			color: #999999;
+			color: #666666;
+			font-family: @topic_font;
 
-			&:hover{ cursor: pointer; color: #666666; }
+			&:hover{ cursor: pointer; }
 		}
 	}
 
@@ -180,49 +179,23 @@
 		display: inline-block;
 		margin-top: 5%;
 
-		.message{
+		canvas{
 			width: 100%;
 			float: left;
 			display: inline-block;
-			text-align: center;
-
-			p.caption{
-				font-size: 1.4em;
-			}
-			p.value{
-				font-size: 4em;
-			}
-		}
-
-		h3{
-			font-size: 4em;
-			line-height: 1.2em;
-			font-weight: normal;
-			text-align: center;
-			margin-top: 4%;
-		}
-
-		#chart{
-			width: 100%;
-			float: left;
-			display: inline-block;
-
-			canvas{
-				width: 100%;
-				height: 600px;
-			}
+			height: 350px;
 		}
 
 		.leader-items{
 			width: 100%;
 			float: left;
 			display: inline-block;
-			font-size: 2em;
+			font-size: @fontsize-body;
 			padding: 3% 0%;
-			line-height: 1.4em;
-			border-top: 1px solid #F5F5F5;
+			line-height: 1.8em;
+			border-top: 1px solid #222222;
 
-			&:last-child{ border-bottom: 1px solid #F5F5F5; }
+			&:last-child{ border-bottom: 1px solid #222222; }
 
 			.photo{
 				width: 8%;
@@ -235,27 +208,26 @@
 					float: left;
 					display: inline-block;
 					border-radius: 50%;
-					border: 2px solid transparent;
-
-					&:hover{
-						border: 2px solid #333333;
-					}
 				}
 			}
 			a.name{
-				width: 53%;
+				width: 48%;
 				float: left;
 				display: inline-block;
 				text-decoration: none;
-				color: #333333;
+				color: #FFFFFF;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
 
 				&:hover{ text-decoration: underline; }
 			}
 			.time{
-				width: 35%;
+				width: 40%;
 				float: left;
 				display: inline-block;
 				text-align: right;
+				color: #DDDDDD;
 			}
 		}
 		.mission-items{
@@ -263,16 +235,17 @@
 			padding: 3% 0%;
 			float: left;
 			display: inline-block;
-			font-size: 2em;
-			border-top: 1px solid #F5F5F5;
+			font-size: @fontsize-body;
+			border-top: 1px solid #222222;
 			line-height: 1.2em;
 
-			&:last-child{ border-bottom: 1px solid #F5F5F5; }
+			&:last-child{ border-bottom: 1px solid #222222; }
 
 			.caption{
 				width: 90%;
 				float: left;
 				display: inline-block;
+				color: #FFFFFF;
 			}
 			.icon{
 				width: 10%;
@@ -287,22 +260,24 @@
 			padding: 3% 0%;
 			float: left;
 			display: inline-block;
-			font-size: 2em;
-			border-top: 1px solid #F5F5F5;
+			font-size: @fontsize-body;
+			border-top: 1px solid #222222;
 			line-height: 1.2em;
 
-			&:last-child{ border-bottom: 1px solid #F5F5F5; }
+			&:last-child{ border-bottom: 1px solid #222222; }
 
 			.title{
-				width: 50%;
+				width: 60%;
 				float: left;
 				display: inline-block;
+				color: #FFFFFF;
 			}
 			.text{
-				width: 50%;
+				width: 40%;
 				float: left;
 				display: inline-block;
 				text-align: right;
+				color: #DDDDDD;
 			}
 		}
 	}
@@ -320,18 +295,18 @@
 		width: 100%;
 		float: left;
 		display: inline-block;
-		font-size: 3.2em;
+		font-size: @fontsize-head;
 		margin-bottom: 5%;
-		color: #333333;
+		color: #FFFFFF;
 	}
 	a{
 		display: inline-block;
 		text-decoration: none;
-		font-size: 1.4em;
+		font-size: @fontsize-body;
 		padding: 15px 20px;
 		border-radius: 5px;
-		color: #FFFFFF;
-		background: #333333;
+		color: #000000;
+		background: #FFFFFF;
 
 		&:hover{ cursor: pointer; }
 		i{ margin-left: 15px; }
@@ -347,8 +322,8 @@
 	text-align: center;
 
 	h2{
-		font-size: 3em;
-		color: #999999;
+		font-size: @fontsize-body;
+		color: #FFFFFF;
 	}
 }
 

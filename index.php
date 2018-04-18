@@ -72,7 +72,11 @@ if($user_online){
     <h1>Hi, <?php echo $user::firstname($profile['name']);?></h1>
 
     <?php if(!empty($profile['goal_month'])){?>
-    <p>Now you coding for <strong><?php echo $wpdb::secondsText($thismonth['total_seconds']);?></strong> (<?php echo $remaining['percent'];?>%) and Remaining <strong><?php echo $wpdb::secondsText($remaining['remaining']);?></strong> (within <?php echo $remaining['remaining_day'];?> days)</p>
+        <?php if($remaining['goal_complete']){?>
+        <p>Your goal is Complepted<i class="fa fa-check-circle" aria-hidden="true"></i></p>
+        <?php }else{?>
+        <p>Remaining <?php echo $wpdb::secondsText($remaining['remaining']);?> within <?php echo $remaining['remaining_day'];?> days. Today, you must have coding <strong><?php echo $wpdb::secondsText($remaining['today']);?></strong> for complete goal.</p>
+        <?php }?>
     <div class="progress">
         <div class="stat">
             <?php if($remaining['goal_complete']){?>
@@ -94,18 +98,22 @@ if($user_online){
     <?php }?>
 
     <div id="goal_form" class="form <?php echo (!empty($profile['goal_month'])?'hidden':'');?>">
-        <input type="text" placeholder="Enter hours" value="<?php echo $user->goal_month;?>" id="goal_month">
+        <input type="number" autocomplete="off" placeholder="Enter hours" value="<?php echo $user->goal_month;?>" id="goal_month">
         <button id="btn_save_goal">SAVE</button>
     </div>
 </div>
 
-<?php if(!empty($profile['goal_month'])){?>
 <div class="container">
-    <h1>Today</h1>
-    <p>Yesterday <?php echo (!empty($yesterday['text'])?$yesterday['text']:'<span>Calm Down :)</span>');?>. Set a goal of <strong><?php echo $profile['goal_month'];?> hrs</strong> for this month (<?php echo $wpdb::secondsText($remaining['avg_perday']);?> per day) and you must have coding...</p>
-    <div class="today"><?php echo $wpdb::secondsText($remaining['today']);?></div>
+    <h1>Languages</h1>
+    <div class="content">
+        <?php foreach ($language as $var) {?>
+        <div class="language-items">
+            <div class="title"><?php echo $var['language'];?></div>
+            <div class="text"><?php echo $var['text'];?></div>
+        </div>
+        <?php } ?>
+    </div>
 </div>
-<?php }?>
 
 <div class="container">
     <h1>Leaderboard</h1>
@@ -125,20 +133,9 @@ if($user_online){
 
 <div class="container">
     <h1>Last 14 Days.</h1>
+    <p>Yesterday <?php echo (!empty($yesterday['text'])?$yesterday['text']:'<span>Calm Down :)</span>');?>.</p>
     <div class="content">
         <canvas id="chart"></canvas>
-    </div>
-</div>
-
-<div class="container">
-    <h1>Languages</h1>
-    <div class="content">
-        <?php foreach ($language as $var) {?>
-        <div class="language-items">
-            <div class="title"><?php echo $var['language'];?></div>
-            <div class="text"><?php echo $var['text'];?></div>
-        </div>
-        <?php } ?>
     </div>
 </div>
 
@@ -171,6 +168,7 @@ if($user_online){
 
 <input type="hidden" id="profile_id" value="<?php echo $profile['id'];?>">
 <?php }?>
+
 <script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/lib/chart.min.js"></script>
 <script type="text/javascript" src="js/lib/Chart.roundedBarCharts.min.js"></script>
