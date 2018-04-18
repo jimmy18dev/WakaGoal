@@ -1,7 +1,7 @@
 <?php
 require_once '../autoload.php';
 header("Content-type: application/json");
-header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Origin: *');
 
 $returnObject = array(
 	"apiVersion"  	=> 1.0,
@@ -14,7 +14,8 @@ switch ($_SERVER['REQUEST_METHOD']){
 	case 'GET':
 		switch ($_GET['request']){
 			case 'activities':
-				$activities = $activity->listActivity($user->id);
+				$profile_id = $_GET['profile_id'];
+				$activities = $activity->listActivity($profile_id);
 				$returnObject['activities'] = $activities;
 				break;
 			case 'leaderboards':

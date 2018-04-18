@@ -97,7 +97,7 @@ class Database{
         return $ip;
     }
 
-    function secondsText($seconds) {
+    public static function secondsText($seconds) {
         $hours      = floor($seconds / 3600);
         $minutes    = floor(($seconds / 60) % 60);
 

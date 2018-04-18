@@ -10,6 +10,7 @@ class User{
     public $access_token;
     public $refresh_token;
     public $photo;
+    public $goal_month;
 
     private $db;
 
@@ -58,6 +59,17 @@ class User{
         $this->refresh_token = $dataset['refresh_token'];
         $this->updated = $dataset['updated'];
         $this->photo = $dataset['photo'];
+        $this->goal_month = $dataset['goal_month'];
+
+        return $dataset;
+    }
+
+    public function getProfile($user_id){
+        $this->db->query('SELECT * FROM user WHERE id = :user_id');
+        $this->db->bind(':user_id',$user_id);
+        $this->db->execute();
+        $dataset = $this->db->single();
+        return $dataset;
     }
 
     public function register($waka_id,$name,$email,$website,$access_token,$refresh_token,$photo){
@@ -89,6 +101,12 @@ class User{
         $this->db->bind(':name',$name);
         $this->db->bind(':website',$website);
         $this->db->bind(':photo',$photo);
+        $this->db->execute();
+    }
+    public function editGoal($user_id,$goal_month){
+        $this->db->query('UPDATE user SET goal_month = :goal_month WHERE id = :user_id');
+        $this->db->bind(':user_id',$user_id);
+        $this->db->bind(':goal_month',$goal_month);
         $this->db->execute();
     }
 
@@ -142,6 +160,10 @@ class User{
         $encryption_key = base64_decode($key.$password);
         list($encrypted_data, $iv) = explode('::', base64_decode($data), 2);
         return openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);
+    }
+    public static function firstname($fullname){
+        $name = explode(' ',strip_tags(trim($fullname)));
+        return trim($name[0]);
     }
 }
 ?>

@@ -19,6 +19,45 @@ class Activity{
         }
     }
 
+    public function Remaining($goal,$complate){
+
+        // Get Days in Month (30,31,28,29)
+        $days_in_month = cal_days_in_month(CAL_GREGORIAN,date('m'),date('Y'));
+
+        // Convert goal to seconds.
+        $goal_of_month = $goal * 3600;
+
+        // Average coding time perday (Full Month) (second)
+        $perday = ($goal / $days_in_month) * 3600;
+
+        // Remaining coding time (second)
+        $remaining = $goal_of_month - $complate;
+
+        // Get today.
+        $today = date('d');
+
+        // Today coding time (second)
+        $today_coding = $remaining / (($days_in_month - $today)+1);
+
+        // Complete percentage
+        if($complate < $goal_of_month){
+            $goal_complete = false;
+            $percent = ($complate * 100) / $goal_of_month;
+        }else{
+            $goal_complete = true;
+            $percent = ($goal_of_month * 100) / $complate;
+        }
+
+        return array(
+            'today'         => ceil($today_coding),
+            'percent'       => number_format($percent,2),
+            'remaining'     => $remaining,
+            'remaining_day' => $days_in_month - $today + 1,
+            'avg_perday'    => $perday,
+            'goal_complete' => $goal_complete
+        );
+    }
+
     public function Yesterday($user_id){
         $this->db->query('SELECT SUM(total_seconds) total_seconds FROM activity WHERE user_id = :user_id AND day = :yesterday');
         $this->db->bind(':user_id',$user_id);
@@ -52,7 +91,7 @@ class Activity{
     }
 
     public function listActivity($user_id){
-        $this->db->query('SELECT * FROM activity WHERE user_id = :user_id ORDER BY day ASC');
+        $this->db->query('SELECT * FROM activity WHERE user_id = :user_id AND day >= (CURDATE() - INTERVAL 14 DAY) ORDER BY day ASC');
         $this->db->bind(':user_id',$user_id);
         $this->db->execute();
         $response = $this->db->resultset();
@@ -106,7 +145,7 @@ class Activity{
             return false;
     }
 
-    public function languageOfMonth($user_id){
+    public function languages($user_id){
         $this->db->query('SELECT SUM(total_seconds) total_seconds,language FROM activity WHERE user_id = :user_id AND MONTH(day) = MONTH(CURRENT_DATE()) AND YEAR(day) = YEAR(CURRENT_DATE()) GROUP BY language ORDER BY total_seconds DESC');
         $this->db->bind(':user_id',$user_id);
         $this->db->execute();
@@ -120,43 +159,12 @@ class Activity{
     }
 
     public function leaderboards(){
-        $this->db->query('SELECT SUM(total_seconds) total_seconds,user_id,user.name,user.photo,day FROM activity LEFT JOIN user AS user ON user_id = user.id GROUP BY day,user_id ORDER BY day DESC');
-        $this->db->bind(':user_id',$user_id);
+        $this->db->query('SELECT user.id,user.name,user.photo,(SELECT SUM(total_seconds) FROM activity WHERE YEARWEEK(day,1) = YEARWEEK(CURDATE(),1) and user_id = user.id) total_seconds FROM user AS user ORDER BY total_seconds DESC');
         $this->db->execute();
-        $response = $this->db->resultset();
-
-        $dataset    = [];
-
-        // Restructure from Date
-        foreach ($response as $k => $v){
-            $date = $v['day'];
-
-            if(!in_array($date, array_column($dataset,'date'))){
-                $structure = array(
-                    'date'          => $date,
-                    'activity'      => []
-                );
-
-                array_push($dataset,$structure);
-            }
-
-            $pos = array_search($date, array_column($dataset,'date'));
-
-            $subset = array(
-                'username'      => $response[$k]['name'],
-                'photo'      => $response[$k]['photo'],
-                'total_seconds' => floatval($response[$k]['total_seconds']),
-                'text' => $this->db->secondsText($response[$k]['total_seconds'])
-            );
-
-            array_push($dataset[$pos]["activity"],$subset);
-        }
-
-        // Cal Total Seconds
+        $dataset = $this->db->resultset();
         foreach ($dataset as $k => $v) {
-            $dataset[$k]['date_text'] = $this->db->datetimeformat($dataset[$k]['date']);
+            $dataset[$k]['text'] = $this->db->secondsText($dataset[$k]['total_seconds']);
         }
-
         return $dataset;
     }
 }

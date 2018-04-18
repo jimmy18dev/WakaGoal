@@ -2,39 +2,308 @@
 @import "config";
 
 .header{
-	width: 100%;
-	height: 56px;
+	width: 40%;
+	padding: 0 30%;
+	height: 60px;
 	float: left;
 	display: inline-block;
 
 	a.link{
+		width: 100%;
 		float: left;
 		display: inline-block;
 		font-size: 1.4em;
 		text-decoration: none;
 		height: 30px;
-		padding: 13px 1%;
+		padding: 15px 0%;
 		line-height: 1.3em;
-		color: #BBBBBB;
+		color: #999999;
 
-		&.active{ color: #000000; }
 		span{ margin-left: 10px; }
+		i{ color: #000000; }
+	}
+}
+
+.container{
+	width: 40%;
+	margin: 0 30%;
+	padding: 5% 0;
+	float: left;
+	display: inline-block;
+
+	h1{
+		font-size: 2.8em;
+		color: #333333;
 	}
 
-	.avatar{
-		float: right;
-		display: inline-block;
-		height: 36px;
-		padding: 10px 1%;
+	p{
+		font-size: 1.6em;
+		line-height: 1.4em;
+		color: #666666;
 
-		img{
-			width: 36px;
-			height: 36px;
+		strong{ color: #333333; }
+	}
+
+	.form{
+		width: 100%;
+		float: left;
+		display: inline-block;
+		margin-top: 5%;
+
+		&.hidden{ display: none; }
+
+		input[type="text"]{
+			width: 63%;
+			font-size: 1.6em;
 			float: left;
 			display: inline-block;
-			border-radius: 50%;
-			box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
-			background: #FAFAFA;
+			margin: 0;
+			padding: 0 5%;
+			border: 0;
+			background: #EEEEEE;
+			line-height: 2.5em;
+			border-radius: 5px;
+			text-align: center;
+			color: #333333;
+
+			&:hover{ cursor: pointer; }
+
+			&:focus{
+				background: #DDDDDD;
+				color: #000000;
+			}
+		}
+		button{
+			width: 25%;
+			font-size: 1.6em;
+			float: right;
+			display: inline-block;
+			font-size: 1.6em;
+			border: 0;
+			background: #333333;
+			color: #FFFFFF;
+			margin: 0;
+			line-height: 2.3em;
+			border-radius: 5px;
+
+			&:hover{
+				cursor: pointer;
+				background: #000000;
+			}
+		}
+	}
+
+	p.note{
+		width: 100%;
+		display: inline-block;
+		font-size: 1em;
+		margin-top: 3%;
+		font-style: italic;
+		text-align: right;
+		color: #BBBBBB;
+	}
+
+	.today{
+		width: 100%;
+		float: left;
+		display: inline-block;
+		text-align: center;
+		font-size: 4em;
+		color: #333333;
+		margin-top: 5%;
+	}
+
+	.progress{
+		width: 100%;
+		float: left;
+		display: inline-block;
+		margin-top: 5%;
+
+		.stat{
+			width: 100%;
+			float: left;
+			display: inline-block;
+			font-size: 0.8em;
+			color: #999999;
+
+			.complete{
+				float: left;
+				display: inline-block;
+			}
+			.goal{
+				float: right;
+				display: inline-block;
+			}
+		}
+
+		.inprogress{
+			width: 100%;
+			float: left;
+			display: inline-block;
+			position: relative;
+			background: #EEEEEE;
+			border-radius: 20px;
+			margin: 2% 0;
+			overflow: hidden;
+
+			&.complete{
+				background: #1abc9c;
+				.bar{ background: #16a085; border-radius: 0px; }
+			}
+
+			.bar{
+				width: 35%;
+				float: left;
+				display: inline-block;
+				height: 10px;
+				background: #000000;
+				border-radius: 20px;
+			}
+		}
+
+		button{
+			width: 100%;
+			float: left;
+			display: inline-block;
+			font-size: 1em;
+			border: 0;
+			background: transparent;
+			color: #999999;
+
+			&:hover{ cursor: pointer; color: #666666; }
+		}
+	}
+
+	.content{
+		width: 100%;
+		float: left;
+		display: inline-block;
+		margin-top: 5%;
+
+		.message{
+			width: 100%;
+			float: left;
+			display: inline-block;
+			text-align: center;
+
+			p.caption{
+				font-size: 1.4em;
+			}
+			p.value{
+				font-size: 4em;
+			}
+		}
+
+		h3{
+			font-size: 4em;
+			line-height: 1.2em;
+			font-weight: normal;
+			text-align: center;
+			margin-top: 4%;
+		}
+
+		#chart{
+			width: 100%;
+			float: left;
+			display: inline-block;
+
+			canvas{
+				width: 100%;
+				height: 600px;
+			}
+		}
+
+		.leader-items{
+			width: 100%;
+			float: left;
+			display: inline-block;
+			font-size: 2em;
+			padding: 3% 0%;
+			line-height: 1.4em;
+			border-top: 1px solid #F5F5F5;
+
+			&:last-child{ border-bottom: 1px solid #F5F5F5; }
+
+			.photo{
+				width: 8%;
+				float: left;
+				display: inline-block;
+				margin-right: 4%;
+
+				img{
+					width: 100%;
+					float: left;
+					display: inline-block;
+					border-radius: 50%;
+					border: 2px solid transparent;
+
+					&:hover{
+						border: 2px solid #333333;
+					}
+				}
+			}
+			a.name{
+				width: 53%;
+				float: left;
+				display: inline-block;
+				text-decoration: none;
+				color: #333333;
+
+				&:hover{ text-decoration: underline; }
+			}
+			.time{
+				width: 35%;
+				float: left;
+				display: inline-block;
+				text-align: right;
+			}
+		}
+		.mission-items{
+			width: 100%;
+			padding: 3% 0%;
+			float: left;
+			display: inline-block;
+			font-size: 2em;
+			border-top: 1px solid #F5F5F5;
+			line-height: 1.2em;
+
+			&:last-child{ border-bottom: 1px solid #F5F5F5; }
+
+			.caption{
+				width: 90%;
+				float: left;
+				display: inline-block;
+			}
+			.icon{
+				width: 10%;
+				float: left;
+				display: inline-block;
+				text-align: right;
+				font-size: 1.2em;
+			}
+		}
+		.language-items{
+			width: 100%;
+			padding: 3% 0%;
+			float: left;
+			display: inline-block;
+			font-size: 2em;
+			border-top: 1px solid #F5F5F5;
+			line-height: 1.2em;
+
+			&:last-child{ border-bottom: 1px solid #F5F5F5; }
+
+			.title{
+				width: 50%;
+				float: left;
+				display: inline-block;
+			}
+			.text{
+				width: 50%;
+				float: left;
+				display: inline-block;
+				text-align: right;
+			}
 		}
 	}
 }
@@ -53,19 +322,19 @@
 		display: inline-block;
 		font-size: 3.2em;
 		margin-bottom: 5%;
-		color: #000000;
+		color: #333333;
 	}
 	a{
 		display: inline-block;
 		text-decoration: none;
-		font-size: 2em;
-		color: #333333;
-		padding: 10px 30px;
+		font-size: 1.4em;
+		padding: 15px 20px;
 		border-radius: 5px;
-		color: @primary_color;
+		color: #FFFFFF;
+		background: #333333;
 
 		&:hover{ cursor: pointer; }
-		i{ margin-left: 10px; }
+		i{ margin-left: 15px; }
 	}
 }
 
@@ -80,125 +349,6 @@
 	h2{
 		font-size: 3em;
 		color: #999999;
-	}
-}
-
-.container{
-	width: 60%;
-	margin: 0% 20%;
-	float: left;
-	display: inline-block;
-	margin-top: 56px;
-	margin-bottom: 5%;
-
-	.leader-items{
-		width: 100%;
-		float: left;
-		display: inline-block;
-		margin-bottom: 10%;
-		border-radius: 10px;
-
-		.date{
-			width: 100%;
-			float: left;
-			display: inline-block;
-			font-size: 3em;
-			margin-bottom: 1%;
-			color: #BBBBBB;
-			text-align: center;
-		}
-
-		.user-items{
-			width: 100%;
-			float: left;
-			display: inline-block;
-			font-size: 2em;
-			margin-top: 3%;
-
-			.photo{
-				width: 7%;
-				float: left;
-				display: inline-block;
-				margin-right: 3%;
-				position: relative;
-				margin-top: -3px;
-
-				img{
-					width: 100%;
-					float: left;
-					display: inline-block;
-					border-radius: 50%;
-					box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
-				}
-
-				i.fa-trophy{
-					position: absolute;
-					top: -5px;
-					right: -5px;
-					font-size: 0.65em;
-					color: #f1c40f;
-				}
-			}
-
-			.name{
-				width: 55%;
-				float: left;
-				display: inline-block;
-				color: #000000;
-			}
-			.time{
-				width: 35%;
-				float: left;
-				display: inline-block;
-				color: #333333;
-			}
-		}
-
-		
-	}
-}
-
-.stat{
-	width: 98%;
-	padding: 0% 1%;
-	float: left;
-	display: inline-block;
-
-	.items{
-		width: 33.33%;
-		padding-top: 5%;
-		float: left;
-		display: inline-block;
-		text-align: center;
-
-		.v{
-			display: block;
-			font-size: 3em;
-			color: #000000;
-
-			span{ color: #BBBBBB; }
-		}
-		.c{
-			display: block;
-			font-size: 2em;
-			line-height: 1em;
-			color: #999999;
-		}
-	}
-}
-
-.chart{
-	position: fixed;
-	bottom: 3%;
-	left: 0;
-	width: 98%;
-	padding-left: 2%;
-	float: left;
-	display: inline-block;
-
-	canvas{
-		width: 100%;
-		height: 50vh;
 	}
 }
 
