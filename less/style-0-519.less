@@ -1,44 +1,37 @@
+@fontsize-head: 2em;
+@fontsize-body: 1.2em;
+@fontsize-info: 0.8em;
+
 .header{
 	width: 90%;
-	padding: 0% 5%;
+	padding: 0 5%;
 }
 
 .container{
 	width: 90%;
-	margin: 0%;
-	padding: 5%;
-	float: left;
-	display: inline-block;
+	margin: 0 5%;
+	margin-bottom: 5%;
 
-	h1{ font-size: 2em; }
-	p{
-		font-size: 1.4em;
-		line-height: 1.4em;
-
-		i.fa-check-circle{ margin-left: 10px; color: #304FFE; }
-	}
+	h1{ font-size: @fontsize-head; }
+	p{ font-size: @fontsize-body; }
 
 	.form{
-		width: 100%;
-		float: left;
-		display: inline-block;
 		margin-top: 5%;
 
-		&.hidden{ display: none; }
-
 		input[type="number"]{
-			width: 63%;
-			font-size: 1.6em;
+			width: 64%;
+			font-size: @fontsize-body;
 			float: left;
 			display: inline-block;
 			margin: 0;
-			padding: 0 5%;
+			padding: 8px 3%;
 			border: 0;
 			background: #333333;
-			line-height: 2.5em;
 			border-radius: 5px;
 			text-align: center;
 			color: #BBBBBB;
+			line-height: 1.25em;
+			font-family: @topic_font;
 
 			&:hover{ cursor: pointer; }
 
@@ -48,17 +41,18 @@
 			}
 		}
 		button{
-			width: 25%;
-			font-size: 1.6em;
+			width: 28%;
 			float: right;
 			display: inline-block;
-			font-size: 1.6em;
+			font-size: @fontsize-body;
 			border: 0;
 			background: #FFFFFF;
 			color: #000000;
 			margin: 0;
-			line-height: 2.3em;
+			line-height: 1em;
 			border-radius: 5px;
+			padding: 10px 0;
+			font-family: @topic_font;
 
 			&:hover{
 				cursor: pointer;
@@ -68,127 +62,78 @@
 	}
 
 	p.note{
-		font-size: 0.8em;
+		font-size: @fontsize-info;
 		margin-top: 5%;
 	}
 
 	.progress{
 		margin-top: 10%;
 
-		.stat{ font-size: 0.8em; }
-		.inprogress{
-			margin: 3% 0;
-			.bar{ height: 10px; }
-		}
-
-		button{
-			width: 100%;
-			float: left;
-			display: inline-block;
-			font-size: 1em;
-			border: 0;
-			background: transparent;
-			color: #666666;
-
-			&:hover{ cursor: pointer; }
-		}
+		.stat{ font-size: @fontsize-info; }
+		.inprogress{ margin: 3% 0; }
+		button{ font-size: @fontsize-info; }
 	}
 
 	.content{
-		width: 100%;
-		float: left;
-		display: inline-block;
 		margin-top: 5%;
-		
-		#chart{
-			height: 600px;
-			canvas{ width: 100%; }
-		}
+		canvas{ height: 500px; }
 
 		.leader-items{
-			font-size: 1.2em;
 			padding: 3% 0%;
-			line-height: 2.2em;
+			line-height: 1.7em;
+			font-size: @fontsize-body;
 
 			.photo{
-				width: 14%;
-				margin-right: 6%;
+				width: 12%;
+				margin-right: 5%;
 			}
-			a.name{ width: 35%; }
+			a.name{ width: 38%; }
 			.time{ width: 45%; }
 		}
 		.mission-items{
-			width: 100%;
-			padding: 3% 0%;
-			float: left;
-			display: inline-block;
-			font-size: 1.2em;
-			border-top: 1px solid #222222;
-			line-height: 1.2em;
-
-			&:last-child{ border-bottom: 1px solid #222222; }
+			font-size: @fontsize-body;
 
 			.caption{
 				width: 90%;
-				float: left;
-				display: inline-block;
-				color: #FFFFFF;
 			}
 			.icon{
-				width: 10%;
-				float: left;
-				display: inline-block;
 				text-align: right;
 				font-size: 1.2em;
 			}
 		}
 		.language-items{
-			padding: 3% 0%;
-			font-size: 1.2em;
+			font-size: @fontsize-body;
+
+			.title{ width: 55%; }
+			.text{ width: 45%; }
 		}
 	}
 }
 
 .login{
-	width: 70%;
-	margin: 0 15%;
-	margin-top: 15%;
-	float: left;
-	display: inline-block;
-	text-align: center;
+	width: 90%;
+	margin: 0 5%;
+	margin-top: 25%;
 
 	p{
-		width: 100%;
-		float: left;
-		display: inline-block;
-		font-size: 3.2em;
-		margin-bottom: 5%;
-		color: #FFFFFF;
+		font-size: @fontsize-head;
+		margin-bottom: 15%;
+		line-height: 1.2em;
 	}
 	a{
-		display: inline-block;
-		text-decoration: none;
-		font-size: 1.4em;
-		padding: 15px 20px;
-		border-radius: 5px;
-		color: #000000;
-		background: #FFFFFF;
+		font-size: @fontsize-body;
+		padding: 10px;
 
-		&:hover{ cursor: pointer; }
 		i{ margin-left: 15px; }
 	}
 }
 
 .announce{
-	width: 80%;
-	margin: 0% 10%;
-	margin-top: 20%;
-	float: left;
-	display: inline-block;
-	text-align: center;
+	width: 90%;
+	margin: 0% 5%;
+	margin-top: 25%;
 
 	h2{
-		font-size: 3em;
-		color: #FFFFFF;
+		font-size: @fontsize-body;
 	}
 }

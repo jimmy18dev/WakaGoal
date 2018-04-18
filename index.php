@@ -1,6 +1,6 @@
 <?php
 include_once 'autoload.php';
-$_SESSION['login_string'] = $user->Encrypt(1);
+// $_SESSION['login_string'] = $user->Encrypt(1);
 
 $profile_id = $_GET['profile'];
 
@@ -139,7 +139,7 @@ if($user_online){
     </div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
     <h1>Mission</h1>
     <div class="content">
         <div class="mission-items">
@@ -164,7 +164,7 @@ if($user_online){
             <div class="icon"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
         </div>
     </div>
-</div>
+</div> -->
 
 <input type="hidden" id="profile_id" value="<?php echo $profile['id'];?>">
 <?php }?>
