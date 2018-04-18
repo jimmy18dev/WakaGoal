@@ -51,7 +51,7 @@ $(function(){
                     maintainAspectRatio: false,
                     cornerRadius: 5,
                 	legend: { display: false },
-                	tooltips: { display: false },
+                    tooltips: { enabled: false },
                     scales: {
                         xAxes: [{
                             gridLines: {
