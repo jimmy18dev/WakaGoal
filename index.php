@@ -1,6 +1,6 @@
 <?php
 include_once 'autoload.php';
-// $_SESSION['login_string'] = $user->Encrypt(1);
+$_SESSION['login_string'] = $user->Encrypt(1);
 
 $profile_id = $_GET['profile'];
 

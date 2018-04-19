@@ -1,5 +1,5 @@
-Chart.defaults.global.defaultFontColor = '#999999';
-Chart.defaults.global.defaultFontSize = '12';
+Chart.defaults.global.defaultFontColor = '#666666';
+Chart.defaults.global.defaultFontSize = '14';
 Chart.defaults.global.defaultFontFamily = 'Barlow';
 
 $(function(){
@@ -42,7 +42,7 @@ $(function(){
                     labels: date,
                     datasets: [{
                         data: total_seconds,
-                        backgroundColor: "#FFFFFF",
+                        backgroundColor: "#333333",
                         borderWidth: 0
                     }]
                 },
