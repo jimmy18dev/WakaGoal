@@ -67,7 +67,6 @@ if($user_online){
     <a href="https://wakatime.com/oauth/authorize?client_id=<?php echo AppID;?>&redirect_uri=<?php echo RedirectURI;?>&response_type=code&scope=email,read_logged_time">Login with Wakatime<i class="fa fa-plug" aria-hidden="true"></i></a>
 </div>
 <?php }else{?>
-
 <div class="container">
     <h1>Hi, <?php echo $user::firstname($profile['name']);?></h1>
 

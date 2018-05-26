@@ -9,6 +9,7 @@ class User{
     public $updated;
     public $access_token;
     public $refresh_token;
+    public $expires_in;
     public $photo;
     public $goal_month;
 
@@ -44,6 +45,15 @@ class User{
         }
     }
 
+    public function getFormWakaID($waka_id){
+        $this->db->query('SELECT * FROM user WHERE waka_id = :waka_id');
+        $this->db->bind(':waka_id',$waka_id);
+        $this->db->execute();
+        $dataset = $this->db->single();
+
+        return $dataset;
+    }
+
     public function get($user_id){
         $this->db->query('SELECT * FROM user WHERE id = :user_id');
         $this->db->bind(':user_id',$user_id);
@@ -57,6 +67,7 @@ class User{
         $this->website = $dataset['website'];
         $this->access_token = $dataset['access_token'];
         $this->refresh_token = $dataset['refresh_token'];
+        $this->expires_in = $dataset['expires_in'];
         $this->updated = $dataset['updated'];
         $this->photo = $dataset['photo'];
         $this->goal_month = $dataset['goal_month'];
@@ -75,7 +86,10 @@ class User{
     public function register($waka_id,$name,$email,$website,$access_token,$refresh_token,$photo){
         $hasAccountID = $this->hasAccount($waka_id,$email);
         if($hasAccountID == -1){
-            $this->db->query('INSERT INTO user(waka_id,name,email,website,registered,access_token,refresh_token,updated,photo) VALUE(:waka_id,:name,:email,:website,:registered,:access_token,:refresh_token,:updated,:photo)');
+
+            $expires_in = time() + (86400 * 60); // Expire in 45 Days
+
+            $this->db->query('INSERT INTO user(waka_id,name,email,website,registered,access_token,refresh_token,expires_in,updated,photo) VALUE(:waka_id,:name,:email,:website,:registered,:access_token,:refresh_token,:expires_in,:updated,:photo)');
             $this->db->bind(':waka_id',$waka_id);
             $this->db->bind(':email',$email);
             $this->db->bind(':name',$name);
@@ -84,6 +98,7 @@ class User{
             $this->db->bind(':updated', date('Y-m-d H:i:s'));
             $this->db->bind(':access_token',$access_token);
             $this->db->bind(':refresh_token',$refresh_token);
+            $this->db->bind(':expires_in',$expires_in);
             $this->db->bind(':photo',$photo);
             $this->db->execute();
             $user_id = $this->db->lastInsertId();
@@ -92,6 +107,18 @@ class User{
             $this->edit($hasAccountID,$name,$email,$website,$photo);
             return $hasAccountID;
         }
+    }
+
+    public function updateAccessToken($user_id,$access_token,$refresh_token,$expires_in){
+
+        $expires_in = time() + $expires_in; // Expire in 45 Days
+        
+        $this->db->query('UPDATE user SET access_token = :access_token,refresh_token = :refresh_token,expires_in = :expires_in WHERE id = :user_id');
+        $this->db->bind(':user_id',$user_id);
+        $this->db->bind(':access_token',$access_token);
+        $this->db->bind(':refresh_token',$refresh_token);
+        $this->db->bind(':expires_in',$expires_in);
+        $this->db->execute();
     }
 
     public function edit($user_id,$name,$email,$website,$photo){
@@ -124,8 +151,9 @@ class User{
     }
 
     public function lostUpate(){
-        $this->db->query('SELECT * FROM user WHERE flag != :flag ORDER BY RAND() LIMIT 1');
-        $this->db->bind(':flag', date('d'));
+        // $this->db->query('SELECT * FROM user WHERE flag != :flag ORDER BY RAND() LIMIT 1');
+        // $this->db->bind(':flag', date('d'));
+        $this->db->query('SELECT id,name,access_token,refresh_token,expires_in FROM user WHERE id = 1');
         $this->db->execute();
         $dataset = $this->db->single();
 

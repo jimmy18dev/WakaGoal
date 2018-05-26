@@ -7,7 +7,7 @@ define('StTime', microtime(true));
 date_default_timezone_set('Asia/Bangkok');
 // error_reporting(E_ALL ^ E_NOTICE);
 
-define("VERSION",'1.0');
+define("VERSION",'1.0.1');
 
 require_once 'config/config.php';
 
