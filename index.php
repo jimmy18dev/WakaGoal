@@ -63,7 +63,7 @@ if($user_online){
 <?php include 'header.php'; ?>
 <?php if(!$user_online){?>
 <div class="login">
-    <a href="https://wakatime.com/oauth/authorize?client_id=<?php echo AppID;?>&redirect_uri=<?php echo RedirectURI;?>&response_type=code&scope=email,read_logged_time">Login with Wakatime<i class="fa fa-plug fa-spin"></i></a>
+    <div class="btn" id="btn-login" data-link="https://wakatime.com/oauth/authorize?client_id=<?php echo AppID;?>&redirect_uri=<?php echo RedirectURI;?>&response_type=code&scope=email,read_logged_time">Login with Wakatime<i class="fa fa-plug fa-spin"></i></div>
 </div>
 <?php }else{?>
 <div class="container">
@@ -176,7 +176,7 @@ if($user_online){
 </div> -->
 
 <footer class="footer">
-    <a href="logout.php" class="logout">Logout</a>
+    <div class="logout" id="btn-logout">Logout</div>
 </footer>
 
 <input type="hidden" id="profile_id" value="<?php echo $profile['id'];?>">
@@ -185,5 +185,9 @@ if($user_online){
 <script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/lib/chart.min.js"></script>
 <script type="text/javascript" src="js/lib/Chart.roundedBarCharts.min.js"></script>
+
+<?php if($user_online){?>
 <script type="text/javascript" src="js/app.chart.js"></script>
+<?php }?>
+<script type="text/javascript" src="js/app.js"></script>
 <body>
