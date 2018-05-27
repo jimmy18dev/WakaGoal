@@ -17,3 +17,10 @@
 <!-- ICON FOR Windows 8 -->
 <meta name="msapplication-TileColor" content="#FFFFFF">
 <meta name="msapplication-TileImage" content="image/favicon/72.png">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="<?php echo TITLE;?>">
+<meta name="format-detection" content="telephone=no">
+
+<!-- <link rel="manifest" href="/manifest.json"> -->

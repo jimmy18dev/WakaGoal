@@ -38,7 +38,7 @@ if($user_online){
 <meta name="viewport" content="user-scalable=no">
 <meta name="viewport" content="initial-scale=1,maximum-scale=1">
 
-<?php include'favicon.php';?>
+<?php include 'favicon.php'; ?>
 
 <!-- Meta Tag Main -->
 <meta name="description" content="<?php echo TITLE;?>"/>
@@ -61,10 +61,9 @@ if($user_online){
 </head>
 <body>
 <?php include 'header.php'; ?>
-
 <?php if(!$user_online){?>
 <div class="login">
-    <a href="https://wakatime.com/oauth/authorize?client_id=<?php echo AppID;?>&redirect_uri=<?php echo RedirectURI;?>&response_type=code&scope=email,read_logged_time">Login with Wakatime<i class="fa fa-plug" aria-hidden="true"></i></a>
+    <a href="https://wakatime.com/oauth/authorize?client_id=<?php echo AppID;?>&redirect_uri=<?php echo RedirectURI;?>&response_type=code&scope=email,read_logged_time">Login with Wakatime<i class="fa fa-plug fa-spin"></i></a>
 </div>
 <?php }else{?>
 <div class="container">
