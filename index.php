@@ -57,25 +57,24 @@ if($user_online){
 
 <base href="<?php echo DOMAIN;?>">
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
-<link rel="stylesheet" type="text/css" href="plugin/font-awesome/css/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="plugin/fontawesome-pro-5.0.13/css/fontawesome-all.min.css"/>
 </head>
 <body>
 <?php include 'header.php'; ?>
 
 <?php if(!$user_online){?>
 <div class="login">
-    <p>How much time do you spend coding ?</p>
     <a href="https://wakatime.com/oauth/authorize?client_id=<?php echo AppID;?>&redirect_uri=<?php echo RedirectURI;?>&response_type=code&scope=email,read_logged_time">Login with Wakatime<i class="fa fa-plug" aria-hidden="true"></i></a>
 </div>
 <?php }else{?>
 <div class="container">
-    <h1>Hi, <?php echo $user::firstname($profile['name']);?></h1>
+    <h1><i class="fal fa-flag-checkered"></i>Goal</h1>
 
     <?php if(!empty($profile['goal_month'])){?>
         <?php if($remaining['goal_complete']){?>
-        <p>Your goal is Complepted<i class="fa fa-check-circle" aria-hidden="true"></i></p>
+        <p>Your goal is Complepted<i class="fa fa-check-circle"></i></p>
         <?php }else{?>
-        <p>Remaining <?php echo $wpdb::secondsText($remaining['remaining']);?> within <?php echo $remaining['remaining_day'];?> days. Today, you must have coding <strong><?php echo $wpdb::secondsText($remaining['today']);?></strong> for complete goal.</p>
+        <p>Today, You must have coding <strong><?php echo $wpdb::secondsText($remaining['today']);?></strong> for complete goal. Remaining <?php echo $wpdb::secondsText($remaining['remaining']);?> within <?php echo $remaining['remaining_day'];?> days.</p>
         <?php }?>
     <div class="progress">
         <div class="stat">
@@ -84,13 +83,12 @@ if($user_online){
             <div class="goal"><?php echo $wpdb::secondsText($thismonth['total_seconds']);?></div>
             <?php }else{?>
             <div class="complete"><?php echo $wpdb::secondsText($thismonth['total_seconds']);?></div>
-            <div class="goal">Goal: <?php echo $profile['goal_month'];?> hrs</div>
+            <div class="goal">Goal: <?php echo $profile['goal_month'];?> hrs <button id="btn_goal_form_toggle"><i class="fal fa-cog"></i></button></div>
             <?php }?>
         </div>
         <div class="inprogress <?php echo ($remaining['goal_complete']?'complete':'');?>">
             <div class="bar" style="width: <?php echo $remaining['percent'];?>%;"></div>
         </div>
-        <button id="btn_goal_form_toggle">Change your goal</button>
     </div>
 
     <?php }else{?>
@@ -104,7 +102,7 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1>Leaderboard</h1>
+    <h1><i class="fal fa-trophy-alt"></i>Leaderboard</h1>
     <div class="content">
         <?php foreach ($leaderboards as $var) {?>
         <div class="leader-items">
@@ -116,19 +114,19 @@ if($user_online){
         </div>
         <?php } ?>
     </div>
-    <p class="note">*Monday is the first day of the week.</p>
+    <p class="note">* Monday is the first day of the week.</p>
 </div>
 
 <div class="container">
-    <h1>Last 14 Days.</h1>
-    <p>Yesterday <?php echo (!empty($yesterday['text'])?$yesterday['text']:'<span>Calm Down :)</span>');?>.</p>
+    <h1><i class="fal fa-clock"></i>Last 14 Days.</h1>
     <div class="content">
         <canvas id="chart"></canvas>
     </div>
+    <p class="note">Yesterday: <strong><?php echo (!empty($yesterday['text'])?$yesterday['text']:'<span>Calm Down :)</span>');?>.</strong></p>
 </div>
 
 <div class="container">
-    <h1>Languages</h1>
+    <h1><i class="fal fa-code"></i>Languages</h1>
     <div class="content">
         <?php foreach ($language as $var) {?>
         <div class="language-items">
@@ -140,7 +138,7 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1>Projects</h1>
+    <h1><i class="fal fa-tags"></i>Projects</h1>
     <div class="content">
         <?php foreach ($projects as $var) {?>
         <div class="language-items">
@@ -177,6 +175,10 @@ if($user_online){
         </div>
     </div>
 </div> -->
+
+<footer class="footer">
+    <a href="logout.php" class="logout">Logout</a>
+</footer>
 
 <input type="hidden" id="profile_id" value="<?php echo $profile['id'];?>">
 <?php }?>

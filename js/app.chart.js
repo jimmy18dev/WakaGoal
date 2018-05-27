@@ -42,7 +42,7 @@ $(function(){
                     labels: date,
                     datasets: [{
                         data: total_seconds,
-                        backgroundColor: "#333333",
+                        backgroundColor: "#FFFFFF",
                         borderWidth: 0
                     }]
                 },
