@@ -14,6 +14,7 @@ if($user_online){
     $yesterday      = $activity->Yesterday($profile['id']);
     $thismonth      = $activity->ThisMonth($profile['id']);
     $language       = $activity->languages($profile['id']);
+    $projects       = $activity->projects($profile['id']);
     $leaderboards   = $activity->leaderboards();
 
     if(!empty($profile['goal_month'])){
@@ -132,6 +133,18 @@ if($user_online){
         <?php foreach ($language as $var) {?>
         <div class="language-items">
             <div class="title"><?php echo $var['language'];?></div>
+            <div class="text"><?php echo $var['text'];?></div>
+        </div>
+        <?php } ?>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Projects</h1>
+    <div class="content">
+        <?php foreach ($projects as $var) {?>
+        <div class="language-items">
+            <div class="title"><?php echo $var['name'];?></div>
             <div class="text"><?php echo $var['text'];?></div>
         </div>
         <?php } ?>

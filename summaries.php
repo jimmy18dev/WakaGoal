@@ -13,11 +13,20 @@ $activity = new Activity();
 foreach ($summaries->data as $data){
 	$date = $data->range->date;
 
+	// Languages activity
 	foreach ($data->languages as $var){
 		$language 		= $var->name;
 		$total_seconds 	= $var->total_seconds;
 
 		$activity->add($user->id,$language,$total_seconds,$date);
+	}
+
+	// Projects activity
+	foreach ($data->projects as $var) {
+		$name 			= $var->name;
+		$total_seconds 	= $var->total_seconds;
+
+		$activity->addProject($user_id,$name,$total_seconds,$date);
 	}
 }
 

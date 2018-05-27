@@ -101,7 +101,11 @@ class Database{
         $hours      = floor($seconds / 3600);
         $minutes    = floor(($seconds / 60) % 60);
 
-        return ($hours>0?$hours.' hrs ':'').($minutes>0?$minutes.' mins':'');
+        if($seconds < 60){
+            return $seconds.' secs';
+        }else{
+            return ($hours>0?$hours.' hrs ':'').($minutes>0?$minutes.' mins':'');
+        }
     }
 
     public function datetimeformat($datetime,$option = 'shortdate'){
