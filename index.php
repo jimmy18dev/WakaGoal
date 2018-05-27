@@ -1,6 +1,6 @@
 <?php
 include_once 'autoload.php';
-// $_SESSION['login_string'] = $user->Encrypt(1);
+$_SESSION['login_string'] = $user->Encrypt(1);
 
 $profile_id = $_GET['profile'];
 
@@ -68,7 +68,7 @@ if($user_online){
 </div>
 <?php }else{?>
 <div class="container">
-    <h1><i class="fal fa-flag-checkered"></i>Goal</h1>
+    <h1>Goal<i class="fal fa-flag-checkered"></i></h1>
 
     <?php if(!empty($profile['goal_month'])){?>
         <?php if($remaining['goal_complete']){?>
@@ -102,7 +102,7 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1><i class="fal fa-trophy-alt"></i>Leaderboard</h1>
+    <h1>Leaderboard<i class="fal fa-trophy-alt"></i></h1>
     <div class="content">
         <?php foreach ($leaderboards as $var) {?>
         <div class="leader-items">
@@ -118,7 +118,7 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1><i class="fal fa-clock"></i>Last 14 Days.</h1>
+    <h1>Last 14 Days.<i class="fal fa-clock"></i></h1>
     <div class="content">
         <canvas id="chart"></canvas>
     </div>
@@ -126,7 +126,7 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1><i class="fal fa-code"></i>Languages</h1>
+    <h1>Code Languages<i class="fal fa-code"></i></h1>
     <div class="content">
         <?php foreach ($language as $var) {?>
         <div class="language-items">
@@ -138,7 +138,7 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1><i class="fal fa-tags"></i>Projects</h1>
+    <h1>Projects<i class="fal fa-tags"></i></h1>
     <div class="content">
         <?php foreach ($projects as $var) {?>
         <div class="language-items">

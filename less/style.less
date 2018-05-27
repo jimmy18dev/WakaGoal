@@ -1,9 +1,7 @@
 @import "reset";
 @import "config";
 
-@fontsize-head: 2.8em;
 @fontsize-body: 1.4em;
-@fontsize-info: 1em;
 
 .header{
 	width: 40%;
@@ -26,103 +24,42 @@
 
 .container{
 	width: 40%;
-	margin: 0 30%;
-	margin-bottom: 12%;
+	padding: 0 30%;
+	padding-bottom: 12%;
 	float: left;
 	display: inline-block;
 
 	h1{
-		font-size: @fontsize-body * 2;
 		color: #FFFFFF;
-		font-size: 3em;
+		font-size: @fontsize-body * 2;
 		font-family: @logo_font;
 		font-weight: normal;
 		letter-spacing: 0.03em;
 		line-height: 1em;
+		margin-bottom: 6%;
 
 		i{
 			font-size: 1em;
-			margin-right: 25px;
+			margin-left: 15px;
+			color: #333333;
 		}
 	}
 
 	p{
-		margin-top: 1em;
 		font-size: @fontsize-body;
 		line-height: 1.4em;
 		color: #CCCCCC;
+		margin-bottom: 6%;
 
 		strong{ color: #FFFFFF; }
 
 		i.fa-check-circle{ margin-left: 10px; color: #304FFE; }
 	}
 
-	.form{
-		width: 100%;
-		float: left;
-		display: inline-block;
-		margin-top: 5%;
-
-		&.hidden{ display: none; }
-
-		input[type="number"]{
-			width: 30%;
-			font-size: @fontsize-body * 1.3;
-			float: left;
-			display: inline-block;
-			margin: 0;
-			padding: 9px 0;
-			border: 0;
-			background: transparent;
-			color: #FFFFFF;
-			font-weight: bold;
-			line-height: 1.25em;
-			font-family: @topic_font;
-			border-bottom: 2px solid #999999;
-			margin-right: 15px;
-
-			&:hover{ cursor: pointer; }
-
-			&:focus{
-				border-bottom: 2px solid #FFFFFF;
-			}
-		}
-		button{
-			float: left;
-			display: inline-block;
-			font-size: @fontsize-body;
-			border: 0;
-			background: #EEEEEE;
-			color: #333333;
-			margin: 0;
-			line-height: 1em;
-			border-radius: 3px;
-			padding: 17px;
-			font-family: @topic_font;
-			font-weight: bold;
-
-			&:hover{
-				cursor: pointer;
-				background: #FFFFFF;
-			}
-		}
-	}
-
-	p.note{
-		width: 100%;
-		display: inline-block;
-		font-size: @fontsize-body * 0.7;
-		margin-top: 3%;
-		font-style: italic;
-		text-align: right;
-		color: #666666;
-	}
-
 	.progress{
 		width: 100%;
 		float: left;
 		display: inline-block;
-		margin-top: 5%;
 
 		.stat{
 			width: 100%;
@@ -180,11 +117,71 @@
 		}
 	}
 
+	.form{
+		width: 100%;
+		float: left;
+		display: inline-block;
+		margin-top: 6%;
+
+		&.hidden{ display: none; }
+
+		input[type="number"]{
+			width: 30%;
+			font-size: @fontsize-body * 1.3;
+			float: left;
+			display: inline-block;
+			margin: 0;
+			padding: 9px 0;
+			border: 0;
+			background: transparent;
+			color: #FFFFFF;
+			font-weight: bold;
+			line-height: 1.25em;
+			font-family: @topic_font;
+			border-bottom: 2px solid #999999;
+			margin-right: 15px;
+
+			&:hover{ cursor: pointer; }
+
+			&:focus{
+				border-bottom: 2px solid #FFFFFF;
+			}
+		}
+		button{
+			float: left;
+			display: inline-block;
+			font-size: @fontsize-body;
+			border: 0;
+			background: #EEEEEE;
+			color: #333333;
+			margin: 0;
+			line-height: 1em;
+			border-radius: 3px;
+			padding: 17px;
+			font-family: @topic_font;
+			font-weight: bold;
+
+			&:hover{
+				cursor: pointer;
+				background: #FFFFFF;
+			}
+		}
+	}
+
+	p.note{
+		width: 100%;
+		display: inline-block;
+		font-size: @fontsize-body * 0.7;
+		margin-top: 6%;
+		font-style: italic;
+		text-align: right;
+		color: #666666;
+	}
+
 	.content{
 		width: 100%;
 		float: left;
 		display: inline-block;
-		margin-top: 5%;
 
 		canvas{
 			width: 100%;
@@ -231,33 +228,9 @@
 				width: 40%;
 				text-align: right;
 				color: #FFFFFF;
+				text-align: right;
 			}
 		}
-		// .mission-items{
-		// 	width: 100%;
-		// 	padding: 3% 0%;
-		// 	float: left;
-		// 	display: inline-block;
-		// 	font-size: @fontsize-body;
-		// 	border-top: 1px solid #222222;
-		// 	line-height: 1.2em;
-
-		// 	&:last-child{ border-bottom: 1px solid #222222; }
-
-		// 	.caption{
-		// 		width: 90%;
-		// 		float: left;
-		// 		display: inline-block;
-		// 		color: #DDDDDD;
-		// 	}
-		// 	.icon{
-		// 		width: 10%;
-		// 		float: left;
-		// 		display: inline-block;
-		// 		text-align: right;
-		// 		font-size: 1.2em;
-		// 	}
-		// }
 
 		.language-items{
 			width: 100%;
@@ -311,20 +284,21 @@
 .announce{
 	width: 80%;
 	margin: 0% 10%;
-	margin-top: 20%;
+	margin-top: 25%;
 	float: left;
 	display: inline-block;
 	text-align: center;
 
 	h2{
 		font-size: @fontsize-body;
-		color: #333333;
+		color: #FFFFFF;
 	}
 }
 
 .footer{
 	width: 40%;
-	padding: 5% 30%;
+	padding: 0% 30%;
+	padding-bottom: 6%;
 	float: left;
 	display: inline-block;
 	color: #FFFFFF;
