@@ -48,7 +48,7 @@ if($user_online){
 <meta property="og:image" content="<?php echo DOMAIN.'/image/ogimage.jpg';?>"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="<?php echo SITENAME;?>"/>
-<meta property="fb:app_id" content="172187536783403"/>
+<meta property="fb:app_id" content="<?php echo FACEBOOK_APP_ID;?>"/>
 
 <meta itemprop="name" content="<?php echo TITLE;?>">
 <meta itemprop="description" content="<?php echo DESCRIPTION;?>">
