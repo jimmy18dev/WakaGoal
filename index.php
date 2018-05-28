@@ -187,7 +187,7 @@ if($user_online){
 <script type="text/javascript" src="js/lib/Chart.roundedBarCharts.min.js"></script>
 
 <?php if($user_online){?>
-<script type="text/javascript" src="js/app.chart.js"></script>
+<script type="text/javascript" src="js/min/activity.chart.min.js"></script>
 <?php }?>
-<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/min/app.min.js"></script>
 <body>
