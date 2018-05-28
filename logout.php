@@ -28,7 +28,7 @@ session_destroy();
 
 <title>Logout...</title>
 <link rel="stylesheet" href="css/style.css" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="plugin/font-awesome/css/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="plugin/fontawesome-pro-5.0.13/css/fontawesome-all.min.css"/>
 
 </head>
 <body>

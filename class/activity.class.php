@@ -19,6 +19,46 @@ class Activity{
         }
     }
 
+    public function hasActivity($user_id,$language,$day){
+        $this->db->query('SELECT id FROM activity WHERE user_id = :user_id AND language = :language AND day = :day');
+        $this->db->bind(':user_id',$user_id);
+        $this->db->bind(':language',$language);
+        $this->db->bind(':day',$day);
+        $this->db->execute();
+        $dataset = $this->db->single();
+
+        if(empty($dataset['id']) || $dataset['id'] == 0)
+            return true;
+        else
+            return false;
+    }
+
+    public function addProject($user_id,$name,$total_seconds,$day){
+        if($this->hasProject($user_id,$name,$day)){
+            $this->db->query('INSERT INTO projects(user_id,name,total_seconds,day) VALUE(:user_id,:name,:total_seconds,:day)');
+            $this->db->bind(':user_id',$user_id);
+            $this->db->bind(':name',$name);
+            $this->db->bind(':total_seconds',$total_seconds);
+            $this->db->bind(':day',$day);
+            $this->db->execute();
+            $user_id = $this->db->lastInsertId();
+            return $user_id;
+        }
+    }
+    public function hasProject($user_id,$name,$day){
+        $this->db->query('SELECT id FROM projects WHERE user_id = :user_id AND name = :name AND day = :day');
+        $this->db->bind(':user_id',$user_id);
+        $this->db->bind(':name',$name);
+        $this->db->bind(':day',$day);
+        $this->db->execute();
+        $dataset = $this->db->single();
+
+        if(empty($dataset['id']) || $dataset['id'] == 0)
+            return true;
+        else
+            return false;
+    }
+
     public function Remaining($goal,$complate){
 
         // Get Days in Month (30,31,28,29)
@@ -131,22 +171,21 @@ class Activity{
         return $dataset;
     }
 
-    public function hasActivity($user_id,$language,$day){
-        $this->db->query('SELECT id FROM activity WHERE user_id = :user_id AND language = :language AND day = :day');
-        $this->db->bind(':user_id',$user_id);
-        $this->db->bind(':language',$language);
-        $this->db->bind(':day',$day);
-        $this->db->execute();
-        $dataset = $this->db->single();
-
-        if(empty($dataset['id']) || $dataset['id'] == 0)
-            return true;
-        else
-            return false;
-    }
-
     public function languages($user_id){
         $this->db->query('SELECT SUM(total_seconds) total_seconds,language FROM activity WHERE user_id = :user_id AND MONTH(day) = MONTH(CURRENT_DATE()) AND YEAR(day) = YEAR(CURRENT_DATE()) GROUP BY language ORDER BY total_seconds DESC');
+        $this->db->bind(':user_id',$user_id);
+        $this->db->execute();
+        $dataset = $this->db->resultset();
+
+        foreach ($dataset as $k => $v) {
+            $dataset[$k]['text'] = $this->db->secondsText($dataset[$k]['total_seconds']);
+        }
+
+        return $dataset;
+    }
+
+    public function projects($user_id){
+        $this->db->query('SELECT SUM(total_seconds) total_seconds,name FROM projects WHERE user_id = :user_id AND MONTH(day) = MONTH(CURRENT_DATE()) AND YEAR(day) = YEAR(CURRENT_DATE()) GROUP BY name ORDER BY total_seconds DESC');
         $this->db->bind(':user_id',$user_id);
         $this->db->execute();
         $dataset = $this->db->resultset();
