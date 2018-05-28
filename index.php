@@ -109,7 +109,7 @@ if($user_online){
                 <img src="<?php echo (!empty($var['photo'])?$var['photo']:'image/avatar.png');?>">
             </a>
             <a href="#" class="name"><?php echo $var['name'];?></a>
-            <div class="time"><?php echo $var['text'];?></div>
+            <div class="time"><?php echo (!empty($var['total_seconds'])?$var['text']:'Tomorrow');?></div>
         </div>
         <?php } ?>
     </div>
@@ -118,7 +118,7 @@ if($user_online){
 
 <div class="container">
     <h1>Last 14 Days.<i class="fal fa-clock"></i></h1>
-    <div class="content">
+    <div class="content chart">
         <canvas id="chart"></canvas>
     </div>
     <p class="note">Yesterday: <strong><?php echo (!empty($yesterday['text'])?$yesterday['text']:'<span>Calm Down :)</span>');?>.</strong></p>

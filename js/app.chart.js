@@ -27,6 +27,7 @@ $(function(){
             });
 
             var ctx = document.getElementById('chart').getContext('2d');
+            ctx.height = 500;
 
             var gradientFill = ctx.createLinearGradient(500, 0, 100, 0);
 
