@@ -9,8 +9,6 @@ $sixday = date('Y-m-d',strtotime("-6 days"));
 
 $summaries = $WakaTime->summaries($sixday,$today,$user->access_token);
 
-print_r($summaries);
-
 if(count($summaries) > 0){
 	foreach ($summaries->data as $data){
 

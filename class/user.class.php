@@ -151,9 +151,9 @@ class User{
     }
 
     public function lostUpate(){
-        // $this->db->query('SELECT * FROM user WHERE flag != :flag ORDER BY RAND() LIMIT 1');
-        // $this->db->bind(':flag', date('d'));
-        $this->db->query('SELECT id,name,access_token,refresh_token,expires_in FROM user WHERE id = 1');
+        // $this->db->query('SELECT id,name,access_token,refresh_token,expires_in FROM user WHERE id = 1');
+        $this->db->query('SELECT id,name,access_token,refresh_token,expires_in FROM user WHERE flag != :flag ORDER BY RAND() LIMIT 1');
+        $this->db->bind(':flag', date('d'));
         $this->db->execute();
         $dataset = $this->db->single();
 
