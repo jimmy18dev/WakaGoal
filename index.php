@@ -62,15 +62,15 @@ if($user_online){
 </head>
 <body>
 
-<?php if($remaining['percent'] == 100){?>
-<script src='http://cdn.rawgit.com/josephg/noisejs/master/perlin.js'></script>
+<?php if($remaining['goal_complete']){?>
+<script type="text/javascript" src="plugin/fireworks/js/perlin.js"></script>
 <script type="text/javascript" src="plugin/fireworks/js/index.js"></script>
 <?php }?>
 
 <?php include 'header.php'; ?>
 <?php if(!$user_online){?>
 <div class="login">
-    <div class="btn" id="btn-login" data-link="https://wakatime.com/oauth/authorize?client_id=<?php echo AppID;?>&redirect_uri=<?php echo RedirectURI;?>&response_type=code&scope=email,read_logged_time">Login with Wakatime<i class="fa fa-plug fa-spin"></i></div>
+    <div class="btn" id="btn-login" data-link="https://wakatime.com/oauth/authorize?client_id=<?php echo AppID;?>&redirect_uri=<?php echo RedirectURI;?>&response_type=code&scope=email,read_logged_time">Login with Wakatime<i class="fal fa-plug"></i></div>
 </div>
 <?php }else{?>
 <div class="container">
@@ -84,13 +84,8 @@ if($user_online){
         <?php }?>
     <div class="progress">
         <div class="stat">
-            <?php if($remaining['goal_complete']){?>
-            <div class="complete">Goal: <?php echo $profile['goal_month'];?> hrs</div>
-            <div class="goal"><?php echo $wpdb::secondsText($thismonth['total_seconds']);?></div>
-            <?php }else{?>
             <div class="complete"><?php echo $wpdb::secondsText($thismonth['total_seconds']);?></div>
             <div class="goal">Goal: <?php echo $profile['goal_month'];?> hrs <button id="btn_goal_form_toggle"><i class="fal fa-cog"></i></button></div>
-            <?php }?>
         </div>
         <div class="inprogress <?php echo ($remaining['goal_complete']?'complete':'');?>">
             <div class="bar" style="width: <?php echo $remaining['percent'];?>%;"></div>
