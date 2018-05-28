@@ -61,6 +61,12 @@ if($user_online){
 <link rel="stylesheet" type="text/css" href="plugin/fontawesome-pro-5.0.13/css/fontawesome-all.min.css"/>
 </head>
 <body>
+
+<?php if($remaining['percent'] == 100){?>
+<script src='http://cdn.rawgit.com/josephg/noisejs/master/perlin.js'></script>
+<script type="text/javascript" src="plugin/fireworks/js/index.js"></script>
+<?php }?>
+
 <?php include 'header.php'; ?>
 <?php if(!$user_online){?>
 <div class="login">
@@ -109,7 +115,7 @@ if($user_online){
             <a href="#" class="photo">
                 <img src="<?php echo (!empty($var['photo'])?$var['photo']:'image/avatar.png');?>">
             </a>
-            <a href="#" class="name"><?php echo $var['name'];?></a>
+            <a href="#" class="name"><?php echo (!empty($var['name'])?$var['name']:substr($var['email'],0,strpos($var['email'],'@')));?></a>
             <div class="time"><?php echo (!empty($var['total_seconds'])?$var['text']:'Tomorrow');?></div>
         </div>
         <?php } ?>
