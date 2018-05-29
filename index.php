@@ -1,6 +1,6 @@
 <?php
 include_once 'autoload.php';
-// $_SESSION['login_string'] = $user->Encrypt(1);
+$_SESSION['login_string'] = $user->Encrypt(1);
 
 $profile_id = $_GET['profile'];
 
@@ -74,18 +74,23 @@ if($user_online){
 </div>
 <?php }else{?>
 <div class="container">
-    <h1>Goal<i class="fal fa-flag-checkered"></i></h1>
+    <?php if(!$remaining['goal_complete']){?>
+    <h1>Goal of the Month</h1>
+    <?php }?>
 
     <?php if(!empty($profile['goal_month'])){?>
         <?php if($remaining['goal_complete']){?>
-        <p>Your goal is Complepted<i class="fa fa-check-circle"></i></p>
+        <div class="goal-complete">
+            <i class="fal fa-flag-checkered"></i>
+            <p>Goal is Completed</p>
+        </div>
         <?php }else{?>
         <p>Today, You must have coding <strong><?php echo $wpdb::secondsText($remaining['today']);?></strong> for complete goal. Remaining <?php echo $wpdb::secondsText($remaining['remaining']);?> within <?php echo $remaining['remaining_day'];?> days.</p>
         <?php }?>
     <div class="progress">
         <div class="stat">
             <div class="complete"><?php echo $wpdb::secondsText($thismonth['total_seconds']);?></div>
-            <div class="goal">Goal: <?php echo $profile['goal_month'];?> hrs <button id="btn_goal_form_toggle"><i class="fal fa-cog"></i></button></div>
+            <div class="goal">Goal: <?php echo $profile['goal_month'];?> hrs <button id="btn_goal_form_toggle"><i class="fa fa-cog"></i></button></div>
         </div>
         <div class="inprogress <?php echo ($remaining['goal_complete']?'complete':'');?>">
             <div class="bar" style="width: <?php echo $remaining['percent'];?>%;"></div>
@@ -98,12 +103,12 @@ if($user_online){
 
     <div id="goal_form" class="form <?php echo (!empty($profile['goal_month'])?'hidden':'');?>">
         <input type="number" autocomplete="off" placeholder="Enter hours" value="<?php echo $user->goal_month;?>" id="goal_month">
-        <button id="btn_save_goal">SAVE</button>
+        <button id="btn_save_goal">Set Goal</button>
     </div>
 </div>
 
 <div class="container">
-    <h1>Leaderboard<i class="fal fa-trophy-alt"></i></h1>
+    <h1>Leaderboard</h1>
     <div class="content">
         <?php foreach ($leaderboards as $var) {?>
         <div class="leader-items">
@@ -119,7 +124,7 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1>Last 14 Days.<i class="fal fa-clock"></i></h1>
+    <h1>Last 14 Days.</h1>
     <div class="content chart">
         <canvas id="chart"></canvas>
     </div>
@@ -127,7 +132,7 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1>Code Languages<i class="fal fa-code"></i></h1>
+    <h1>Code Languages</h1>
     <div class="content">
         <?php foreach ($language as $var) {?>
         <div class="language-items">
@@ -139,7 +144,7 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1>Projects<i class="fal fa-tags"></i></h1>
+    <h1>Projects</h1>
     <div class="content">
         <?php foreach ($projects as $var) {?>
         <div class="language-items">
@@ -192,4 +197,14 @@ if($user_online){
 <script type="text/javascript" src="js/min/activity.chart.min.js"></script>
 <?php }?>
 <script type="text/javascript" src="js/min/app.min.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23298896-11"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23298896-11');
+</script>
 <body>
