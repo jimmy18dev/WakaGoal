@@ -1,0 +1,166 @@
+@fontsize-body: 1.4em;
+
+canvas{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.header{
+	width: 70%;
+	padding: 12% 15%;
+
+	h1{ font-size: @fontsize-body * 4; }
+	p{
+		margin-top: 0.5em;
+		font-size: @fontsize-body;
+	}
+}
+
+.container{
+	width: 70%;
+	padding: 0 15%;
+	padding-bottom: 12%;
+
+	h1{
+		font-size: @fontsize-body * 2;
+		margin-bottom: 6%;
+	}
+
+	p{
+		font-size: @fontsize-body;
+		line-height: 1.4em;
+		margin-bottom: 6%;
+	}
+
+	.goal-complete{
+		font-size: @fontsize-body;
+		line-height: 1.4em;;
+
+		i{
+			font-size: @fontsize-body * 3;
+			margin-bottom: 10px;
+		}
+	}
+
+	.progress{
+		.stat{
+			font-size: @fontsize-body * 0.7;
+			.goal{
+				button{
+					font-size: @fontsize-body * 0.7;
+				}
+			}
+		}
+
+		.inprogress{
+			margin: 3% 0;
+			.bar{ height: 0.5em; }
+		}
+	}
+
+	.form{
+		margin-top: 6%;
+
+		input[type="number"]{
+			width: 72%;
+			float: left;
+			display: inline-block;
+			margin: 0;
+			margin-right: 3%;
+			padding: 0 15px;
+			background: transparent;
+			color: @font_color;
+			line-height: 2.1em;
+			font-family: @topic_font;
+			border: 1px solid @font_color_light;
+			border-radius: 3px;
+			box-sizing: border-box;
+			font-size: @fontsize-body;
+
+			&:hover{ cursor: pointer; }
+			&:focus{ border-bottom: 1px solid @font_color; }
+		}
+		button{
+			width: 25%;
+			float: left;
+			display: inline-block;
+			font-size: @fontsize-body;
+			border: 0;
+			background: @font_color;
+			color: #000000;
+			margin: 0;
+			line-height: 2em;
+			border-radius: 3px;
+			font-family: @topic_font;
+			font-weight: bold;
+
+			&:hover{ cursor: pointer; }
+		}
+	}
+
+	p.note{
+		font-size: @fontsize-body * 0.7;
+		margin-top: 6%;
+	}
+
+	.content{
+		&.chart{ height: 400px; }
+
+		.leader-items{
+			font-size: @fontsize-body;
+
+			.photo{
+				width: 8%;
+				margin-right: 4%;
+				padding: 4% 0;
+			}
+			a.name{ width: 48%; }
+			.time{ width: 40%; }
+		}
+
+		.language-items{
+			padding: 4% 0%;
+			font-size: @fontsize-body;
+			line-height: 1.2em;
+
+			.title{ width: 60%; }
+			.text{ width: 40%;}
+		}
+	}
+}
+
+.login{
+	width: 70%;
+	margin: 0 15%;
+	margin-top: 40%;
+
+	.btn{
+		font-size: @fontsize-body;
+		padding: 15px 0;
+
+		i{ margin-left: 20px; }
+	}
+}
+
+.announce{
+	width: 80%;
+	margin: 0% 10%;
+	margin-top: 50%;
+
+	h2{ font-size: @fontsize-body; }
+}
+
+.footer{
+	width: 70%;
+	padding: 0% 15%;
+	padding-bottom: 6%;
+
+	.logout{
+		font-size: @fontsize-body;
+		padding: 3% 0;
+	}
+}
