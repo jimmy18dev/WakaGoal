@@ -85,7 +85,7 @@ if($user_online){
             <p>Goal is Completed</p>
         </div>
         <?php }else{?>
-        <p>Today, You must have coding <strong><?php echo $wpdb::secondsText($remaining['today']);?></strong> for complete goal. Remaining <?php echo $wpdb::secondsText($remaining['remaining']);?> within <?php echo $remaining['remaining_day'];?> days.</p>
+        <p>Today, You must have coding <strong><?php echo $wpdb::secondsText($remaining['today']);?></strong> for complete goal and remaining <strong><?php echo $wpdb::secondsText($remaining['remaining']);?></strong> within <strong><?php echo $remaining['remaining_day'];?> days</strong>, Good Luck.</p>
         <?php }?>
     <div class="progress">
         <div class="stat">
