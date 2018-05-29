@@ -5,7 +5,7 @@ $WakaTime = new WakaTime();
 $activity = new Activity();
 
 $today 	= date('Y-m-d',strtotime("-1 days"));
-$sixday = date('Y-m-d',strtotime("-6 days"));
+$sixday = date('Y-m-d',strtotime("-7 days"));
 
 $summaries = $WakaTime->summaries($sixday,$today,$user->access_token);
 

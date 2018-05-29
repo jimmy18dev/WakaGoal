@@ -21,8 +21,6 @@
 		font-size: @fontsize-body * 1.5;
 		letter-spacing: 0em;
 		margin-bottom: 7%;
-
-		i{ margin-left: 15px; }
 	}
 
 	p{
@@ -31,17 +29,25 @@
 		margin-bottom: 6%;
 	}
 
+	.goal-complete{
+		font-size: @fontsize-body;
+		line-height: 1.2em;
+
+		i{
+			font-size: @fontsize-body * 3;
+			margin-bottom: 10px;
+		}
+	}
+
 	.progress{
 		.stat{
 			font-size: @fontsize-body * 0.7;
-			.goal{
-				button{ font-size: @fontsize-body * 1; }
-			}
+			.goal{ button{ font-size: @fontsize-body; } }
 		}
 
 		.inprogress{
 			margin: 7% 0;
-			.bar{ height: 1em; }
+			.bar{ height: 0.5em; }
 		}
 	}
 
@@ -50,16 +56,16 @@
 
 		input[type="number"]{
 			width: 100%;
-			font-size: @fontsize-body * 1.3;
-			padding: 9px 0;
-			line-height: 1.25em;
-			margin-right: 0;
-			margin-bottom: 5%;
+			margin: 0;
+			padding: 0 15px;
+			line-height: 2.1em;
+			font-size: @fontsize-body;
+			margin-bottom: 3.5%;
 		}
 		button{
 			width: 100%;
 			font-size: @fontsize-body;
-			padding: 17px 0;
+			line-height: 2em;
 		}
 	}
 
@@ -69,7 +75,8 @@
 	}
 
 	.content{
-		canvas{ height: 350px; }
+		
+		&.chart{ height: 300px; }
 
 		.leader-items{
 			font-size: @fontsize-body;

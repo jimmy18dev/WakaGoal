@@ -85,7 +85,8 @@ class Activity{
             $percent = ($complate * 100) / $goal_of_month;
         }else{
             $goal_complete = true;
-            $percent = ($goal_of_month * 100) / $complate;
+            $percent = 100;
+            // $percent = ($goal_of_month * 100) / $complate;
         }
 
         return array(
@@ -198,7 +199,7 @@ class Activity{
     }
 
     public function leaderboards(){
-        $this->db->query('SELECT user.id,user.name,user.photo,(SELECT SUM(total_seconds) FROM activity WHERE YEARWEEK(day,1) = YEARWEEK(CURDATE(),1) and user_id = user.id) total_seconds FROM user AS user ORDER BY total_seconds DESC');
+        $this->db->query('SELECT user.id,user.name,user.email,user.photo,(SELECT SUM(total_seconds) FROM activity WHERE YEARWEEK(day,1) = YEARWEEK(CURDATE(),1) and user_id = user.id) total_seconds FROM user AS user ORDER BY total_seconds DESC');
         $this->db->execute();
         $dataset = $this->db->resultset();
         foreach ($dataset as $k => $v) {
