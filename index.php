@@ -1,6 +1,6 @@
 <?php
 include_once 'autoload.php';
-$_SESSION['login_string'] = $user->Encrypt(1);
+// $_SESSION['login_string'] = $user->Encrypt(1);
 
 $profile_id = $_GET['profile'];
 
@@ -116,7 +116,7 @@ if($user_online){
                 <img src="<?php echo (!empty($var['photo'])?$var['photo']:'image/avatar.png');?>">
             </a>
             <a href="#" class="name"><?php echo (!empty($var['name'])?$var['name']:substr($var['email'],0,strpos($var['email'],'@')));?></a>
-            <div class="time"><?php echo (!empty($var['total_seconds'])?$var['text']:'Tomorrow');?></div>
+            <div class="time"><?php echo (!empty($var['total_seconds'])?$var['text']:'n/a');?></div>
         </div>
         <?php } ?>
     </div>
@@ -128,7 +128,7 @@ if($user_online){
     <div class="content chart">
         <canvas id="chart"></canvas>
     </div>
-    <p class="note">Yesterday: <strong><?php echo (!empty($yesterday['text'])?$yesterday['text']:'<span>Calm Down :)</span>');?>.</strong></p>
+    <p class="note">Yesterday: <strong><?php echo (!empty($yesterday['text'])?$yesterday['text']:'<span>n/a</span>');?>.</strong></p>
 </div>
 
 <div class="container">
