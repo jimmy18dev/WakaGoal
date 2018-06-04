@@ -1,6 +1,6 @@
 <?php
 include_once 'autoload.php';
-// $_SESSION['login_string'] = $user->Encrypt(1);
+$_SESSION['login_string'] = $user->Encrypt(1);
 
 $profile_id = $_GET['profile'];
 
@@ -108,7 +108,7 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1>Leaderboard</h1>
+    <h1>Weekly Leaderboard</h1>
     <div class="content">
         <?php foreach ($leaderboards as $var) {?>
         <div class="leader-items">
@@ -120,7 +120,7 @@ if($user_online){
         </div>
         <?php } ?>
     </div>
-    <p class="note">* Monday is the first day of the week.</p>
+    <p class="note">* <strong>Monday</strong> is the first day of the week.</p>
 </div>
 
 <div class="container">
@@ -141,6 +141,7 @@ if($user_online){
         </div>
         <?php } ?>
     </div>
+    <p class="note">* Activities for <strong>Monthly.</strong></p>
 </div>
 
 <div class="container">
@@ -152,6 +153,22 @@ if($user_online){
             <div class="text"><?php echo $var['text'];?></div>
         </div>
         <?php } ?>
+    </div>
+    <p class="note">* Activities for <strong>Monthly.</strong></p>
+</div>
+
+<div class="container">
+    <h1>How to Set Better Goals</h1>
+    <p>“Measuring programming progress by lines of code is like measuring aircraft building progress by weight” — Bill Gates</p>
+
+    <p><a href="https://hackernoon.com/pmos-for-programmers-how-to-set-better-goals-521863db9938"><i class="fa fa-external-link-square"></i>PMOs for Programmers — How to Set Better Goals</a></p>
+</div>
+
+<div class="container">
+    <h1>WakaGoal Mobile</h1>
+    <div class="qrcode">
+        <img src="image/qrcode.png" alt="WakaGoal QRCode">
+        <div class="tip">Apple's iOS 11 included many enhancements including the addition of a QR reader into the smartphone's camera. To scan a QR code with an iPhone camera</div>
     </div>
 </div>
 
