@@ -108,7 +108,7 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1>Leaderboard</h1>
+    <h1>Weekly Leaderboard</h1>
     <div class="content">
         <?php foreach ($leaderboards as $var) {?>
         <div class="leader-items">
@@ -116,11 +116,11 @@ if($user_online){
                 <img src="<?php echo (!empty($var['photo'])?$var['photo']:'image/avatar.png');?>">
             </a>
             <a href="#" class="name"><?php echo (!empty($var['name'])?$var['name']:substr($var['email'],0,strpos($var['email'],'@')));?></a>
-            <div class="time"><?php echo (!empty($var['total_seconds'])?$var['text']:'Tomorrow');?></div>
+            <div class="time"><?php echo (!empty($var['total_seconds'])?$var['text']:'n/a');?></div>
         </div>
         <?php } ?>
     </div>
-    <p class="note">* Monday is the first day of the week.</p>
+    <p class="note">* <strong>Monday</strong> is the first day of the week.</p>
 </div>
 
 <div class="container">
@@ -128,30 +128,59 @@ if($user_online){
     <div class="content chart">
         <canvas id="chart"></canvas>
     </div>
-    <p class="note">Yesterday: <strong><?php echo (!empty($yesterday['text'])?$yesterday['text']:'<span>Calm Down :)</span>');?>.</strong></p>
+    <p class="note">Yesterday: <strong><?php echo (!empty($yesterday['text'])?$yesterday['text']:'<span>n/a</span>');?>.</strong></p>
 </div>
 
 <div class="container">
     <h1>Code Languages</h1>
     <div class="content">
-        <?php foreach ($language as $var) {?>
-        <div class="language-items">
-            <div class="title"><?php echo $var['language'];?></div>
-            <div class="text"><?php echo $var['text'];?></div>
-        </div>
-        <?php } ?>
+        <?php if(count($language) > 0){
+            foreach ($language as $var) {
+            ?>
+            <div class="language-items">
+                <div class="title"><?php echo $var['language'];?></div>
+                <div class="text"><?php echo $var['text'];?></div>
+            </div>
+            <?php
+            }
+        }else{?>
+        <div class="empty">Activity not found.</div>
+        <?php }?>
     </div>
+    <p class="note">* Activities for <strong>Monthly.</strong></p>
 </div>
 
 <div class="container">
     <h1>Projects</h1>
     <div class="content">
-        <?php foreach ($projects as $var) {?>
-        <div class="language-items">
-            <div class="title"><?php echo $var['name'];?></div>
-            <div class="text"><?php echo $var['text'];?></div>
-        </div>
-        <?php } ?>
+        <?php if(count($projects) > 0){
+            foreach ($projects as $var) {
+            ?>
+            <div class="language-items">
+                <div class="title"><?php echo $var['name'];?></div>
+                <div class="text"><?php echo $var['text'];?></div>
+            </div>
+            <?php
+            }
+        }else{?>
+        <div class="empty">Activity not found.</div>
+        <?php }?>
+    </div>
+    <p class="note">* Activities for <strong>Monthly.</strong></p>
+</div>
+
+<div class="container">
+    <h1>How to Set Better Goals</h1>
+    <p>“Measuring programming progress by lines of code is like measuring aircraft building progress by weight” — Bill Gates</p>
+
+    <p><a href="https://hackernoon.com/pmos-for-programmers-how-to-set-better-goals-521863db9938"><i class="fa fa-external-link-square"></i>PMOs for Programmers — How to Set Better Goals</a></p>
+</div>
+
+<div class="container">
+    <h1>WakaGoal Mobile</h1>
+    <div class="qrcode">
+        <img src="image/qrcode.png" alt="WakaGoal QRCode">
+        <div class="tip">Apple's iOS 11 included many enhancements including the addition of a QR reader into the smartphone's camera. To scan a QR code with an iPhone camera</div>
     </div>
 </div>
 

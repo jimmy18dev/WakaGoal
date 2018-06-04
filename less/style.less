@@ -57,6 +57,19 @@ canvas{
 		margin-bottom: 6%;
 
 		strong{ color: @font_color; }
+		a{
+			color: @font_color;
+			text-decoration: none;
+
+			i{
+				margin-right: 10px;
+				font-size: @fontsize-body * 0.7;
+			}
+
+			&:hover{
+				text-decoration: underline;
+			}
+		}
 
 		i.fa-check-circle{ margin-left: 10px; }
 	}
@@ -141,7 +154,7 @@ canvas{
 		display: inline-block;
 		margin-top: 6%;
 
-		// &.hidden{ display: none; }
+		&.hidden{ display: none; }
 
 		input[type="number"]{
 			width: 72%;
@@ -180,6 +193,27 @@ canvas{
 		}
 	}
 
+	.qrcode{
+		width: 100%;
+		float: left;
+		display: inline-block;
+
+		img{
+			width: 25%;
+			float: left;
+			display: inline-block;
+		}
+
+		.tip{
+			width: 70%;
+			margin-left: 5%;
+			float: left;
+			display: inline-block;
+			color: @font_color;
+			font-size: @fontsize-body;
+		}
+	}
+
 	p.note{
 		width: 100%;
 		display: inline-block;
@@ -200,6 +234,16 @@ canvas{
 		}
 
 		&.chart{ height: 350px; }
+
+		.empty{
+			width: 100%;
+			padding: 15% 0;
+			float: left;
+			display: inline-block;
+			text-align: center;
+			color: @font_color_light;
+			font-style: italic;
+		}
 
 		.leader-items{
 			width: 100%;
