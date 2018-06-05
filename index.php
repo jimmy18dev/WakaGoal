@@ -1,6 +1,6 @@
 <?php
 include_once 'autoload.php';
-$_SESSION['login_string'] = $user->Encrypt(1);
+// $_SESSION['login_string'] = $user->Encrypt(1);
 
 $profile_id = $_GET['profile'];
 
@@ -170,10 +170,13 @@ if($user_online){
 </div>
 
 <div class="container">
-    <h1>How to Set Better Goals</h1>
+    <h1>How to Set Better Goals ?</h1>
     <p>“Measuring programming progress by lines of code is like measuring aircraft building progress by weight” — Bill Gates</p>
 
-    <p><a href="https://hackernoon.com/pmos-for-programmers-how-to-set-better-goals-521863db9938"><i class="fa fa-external-link-square"></i>PMOs for Programmers — How to Set Better Goals</a></p>
+    <p><a href="https://hackernoon.com/pmos-for-programmers-how-to-set-better-goals-521863db9938" target="_blank"><i class="fa fa-external-link-square"></i>PMOs for Programmers — How to Set Better Goals</a></p>
+    <p><a href="https://www.mindtools.com/pages/article/newHTE_90.htm" target="_blank"><i class="fa fa-external-link-square"></i>Golden Rules of Goal Setting</a></p>
+    <p><a href="https://www.huffingtonpost.com/paul-b-evans/7-ways-to-set-better-goals_b_8899508.html" target="_blank"><i class="fa fa-external-link-square"></i>7 Ways to Set Better Goals</a></p>
+    <p><a href="https://www.success.com/article/rohn-4-tips-for-setting-powerful-goals" target="_blank"><i class="fa fa-external-link-square"></i>4 Tips for Setting Powerful Goals</a></p>
 </div>
 
 <div class="container">
